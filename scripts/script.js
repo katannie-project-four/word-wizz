@@ -1,25 +1,29 @@
 const wizzApp = {
   category: [
-    [{
-      type: 'chicken',
-      wordsArr: [],
-      score: 0
-    },
-    {
-      type: 'cow',
-      wordsArr: [],
-      score: 0
-    },
-    {
-      type: 'fish',
-      wordsArr: [],
-      score: 0
-    }
+    // ANIMALS
+    [
+      // CHICKEN
+      {
+        type: 'chicken',
+        wordsArr: [],
+        score: 0
+      },
+      // COW
+      {
+        type: 'cow',
+        wordsArr: [],
+        score: 0
+      },
+      // FISH
+      {
+        type: 'fish',
+        wordsArr: [],
+        score: 0
+      }
     ]
   ]
 }
 
-// Declaring our game round words
 const animalArr = wizzApp.category[0];
 const chickenObj = animalArr[0];
 const cowObj = animalArr[1];
@@ -29,8 +33,9 @@ const finalChickenWordsArr = chickenObj.wordsArr;
 const finalCowWordsArr = cowObj.wordsArr;
 const finalFishWordsArr = fishObj.wordsArr;
 
-const uniqueArr = function(arr) {
-  return arr.filter(function(item, index) {
+// FILTER THROUGH ARRAY TO REMOVE DUPLICATES
+const uniqueArr = function (arr) {
+  return arr.filter(function (item, index) {
     return arr.indexOf(item) >= index;
   });
 };
@@ -65,9 +70,20 @@ $.when(...chickenObjArr)
     chickenObj.wordsArr.push(...cleanChickenArr)
   });
 
-  console.log(chickenObj);
+
+const goToNextScreen = (btnName, currentScreen, nextScreen, overlay, main) => {
+  $(btnName).on('click', function () {
+    $(currentScreen).addClass('hide')
+    $(nextScreen).removeClass('hide')
+    $(overlay).removeClass('hide')
+    $(main).removeClass('hide')
+  });
+}
+
+goToNextScreen('.start-btn', '.intro-screen', '.game-play-screen', '.countdown-overlay', '.game-center');
+
+
 // DOCUMENT READY: Initialise quiz when DOM is ready and loaded
 // $(function () {
 //   wizzApp.init();
 // });
-
