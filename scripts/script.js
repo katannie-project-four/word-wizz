@@ -26,6 +26,8 @@ const cowObj = animalArr[1];
 const fishObj = animalArr[2];
 
 const finalChickenWordsArr = chickenObj.wordsArr;
+const finalCowWordsArr = cowObj.wordsArr;
+const finalFishWordsArr = fishObj.wordsArr;
 
 const uniqueArr = function(arr) {
   return arr.filter(function(item, index) {
