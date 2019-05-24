@@ -93,29 +93,47 @@ $.when(...chickenObjArr)
 // START GAME
 
 
-
 const goToNextScreen = (btnName, currentScreen, nextScreen, main) => {
   $(btnName).on('click', function () {
     $(currentScreen).addClass('hide')
     $(nextScreen).removeClass('hide')
     $('.countdown-overlay').removeClass('hide')
     $(main).removeClass('hide')
-    $(function () {
-      var timer = setInterval(function () {
-        $('.three-sec-timer').html(function (i, html) {
-
-          if (parseInt(html) > 0) {
-            return parseInt(html) - 1;
+    let timeleft = 3;
+    let timer = setInterval(function () {
+      $('.three-sec-timer').html(timeleft);
+      timeleft -= 1;
+      if (timeleft < 0) {
+        $('.countdown-overlay').addClass('hide');
+        let timeleft = 20;
+        let timer = setInterval(function () {
+          $('.play-timer').html(timeleft);
+          timeleft -= 1;
+          if (timeleft < 0) {
+            $('.game-play-screen').addClass('hide');
+            $('.round-result-screen').removeClass('hide');
           }
-          else {
-            $('.countdown-overlay').addClass('hide')
-          }
-        });
+        }, 1000);
+      }
+    }, 1000);
+    // $(function () {
+    //   const timer = setInterval(function () {
+    //     $('.three-sec-timer').html(function (i, html) {
 
-      }, 1000);
-    });
+    //       if (parseInt(html) > 0) {
+    //         return parseInt(html) - 1;
+    //       }
+    //       else {
+    //         $('.countdown-overlay').addClass('hide');
+    //       }
+    //     });
+    //   }, 1000);
+    // });
   });
 }
+
+
+
 
 
 
