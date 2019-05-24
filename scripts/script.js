@@ -76,23 +76,24 @@ $.when(...chickenObjArr)
 // === GAME ===//
 
 //Form
-wizzApp.handleSubmit = (animalTypeArr) => {
-  $('form').on('submit', function (event, animalTypeArr) {
-    console.log(`ANIMAL:`, animalTypeArr);
+wizzApp.handleSubmitOne = () => {
+  let chickenScore = chickenObj.score;
+
+  $('form').on('submit', function (chickenScore) {
+    console.log(chickenScore)
     // prevent the default behaviour
     event.preventDefault();
     // grabs the user's input
     let userInput = $('input').val();
     //reset input field to nothing
     $('input').val('');
-
     //check user's guess against current list and if correct, add one
-    if (animalTypeArr.includes(userInput)) {
-      animalObj.score += 1;
+    if (finalChickenWordsArr.includes(userInput)) {
+      chickenObj.score += 1;
       //append correct guesses and colour them green
       $('.user-guesses').append(`<li class="correct">${userInput}</li>`);
       //update score
-      $('.score-counter').html(`<p>${animalObj.score}</p>`)
+      $('.score-counter').html(`<p>${chickenObj.score}</p>`)
     } else {
       //if inputs do not match, still append but leave red
       $('.user-guesses').append(`<li>${userInput}</li>`)
@@ -111,10 +112,10 @@ wizzApp.startGame = () => {
   // roundTwo();
   // roundThree();
   // endGame();
- }
+}
 
 wizzApp.roundOne = () => {
-  wizzApp.handleSubmit(cleanChickenArr);
+  wizzApp.handleSubmitOne();
   $(`.intro-screen`).addClass(`hide`);
   $(`.game-play-screen`).removeClass(`hide`);
   $(`.game-center`).removeClass(`hide`);
@@ -124,7 +125,7 @@ wizzApp.roundOne = () => {
 
 wizzApp.playGameRound = (animalObj) => {
 
-  $(`.score-counter`).html(`<p>${{animalObj}.score}</p>`);
+  $(`.score-counter`).html(`<p>${{ animalObj }.score}</p>`);
   $(`.countdown-overlay`).removeClass(`hide`);
   let timeLeft = 3;
   let timer = setInterval(function () {
@@ -138,7 +139,6 @@ wizzApp.playGameRound = (animalObj) => {
 };
 
 wizzApp.playGame = (animalWord) => {
-  console.log(animalWord);
   $(`.category-word`).html(`${animalWord}`);
   $('.countdown-overlay').addClass('hide');
   //start 20second timer
@@ -157,7 +157,7 @@ wizzApp.showRoundResultScreen = (currentRoundNum, nextRoundNum) => {
   //load data for next round
 
   //update values and display round results
-  $('.round-result-screen p span').html(`${{animalObj}.score}`);
+  $('.round-result-screen p span').html(`${{ animalObj }.score}`);
   $(`h2 span`).html(`${currentRoundNum}`);
   $(`.next-round-btn span`).html(`${nextRoundNum}`);
   $('.round-result-screen').removeClass('hide');
