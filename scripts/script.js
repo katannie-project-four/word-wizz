@@ -24,6 +24,7 @@ const wizzApp = {
   ]
 }
 
+// ALL OUR ANIMAL STUFF STUFF
 const animalArr = wizzApp.category[0];
 const chickenObj = animalArr[0];
 const cowObj = animalArr[1];
@@ -70,17 +71,43 @@ $.when(...chickenObjArr)
     chickenObj.wordsArr.push(...cleanChickenArr)
   });
 
+// GAME PLAY STUFF
 
-const goToNextScreen = (btnName, currentScreen, nextScreen, overlay, main) => {
+// TIMER FUNCTION
+const elem = document.getElementsByClassName('.timer');
+let timerId = setInterval(3, 1000);
+
+const countdown = (timeLeft) => {
+  if (timeLeft == -1) {
+    clearTimeout(timerId);
+    hideOverlay();
+  } else {
+    elem.innerHTML = timeLeft;
+    timeLeft--;
+  }
+}
+
+// START GAME
+
+const hideOverlay = () => {
+  $('.countdown-overlay').addClass('hide')
+}
+
+const goToNextScreen = (btnName, currentScreen, nextScreen, main) => {
   $(btnName).on('click', function () {
     $(currentScreen).addClass('hide')
     $(nextScreen).removeClass('hide')
-    $(overlay).removeClass('hide')
+    $('.countdown-overlay').removeClass('hide')
     $(main).removeClass('hide')
+    countdown(3);
   });
 }
 
-goToNextScreen('.start-btn', '.intro-screen', '.game-play-screen', '.countdown-overlay', '.game-center');
+const startGamePlay = () => {
+  goToNextScreen('.start-btn', '.intro-screen', '.game-play-screen', '.countdown-overlay', '.game-center');
+}
+
+startGamePlay();
 
 
 // DOCUMENT READY: Initialise quiz when DOM is ready and loaded
