@@ -199,6 +199,14 @@ h3 {
   background: rgba(0, 0, 0, 0.2);
 }
 
+li {
+  color: red;
+}
+
+.correct {
+  color: green;
+}
+
 footer {
   position: fixed;
   bottom: 0;

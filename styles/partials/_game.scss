@@ -3,3 +3,11 @@
   background: rgba(0,0,0,.2);
   // @include flex(column, nowrap, center, center);
 }
+
+li {
+  color: red;
+}
+
+.correct {
+  color: green;
+}
