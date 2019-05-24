@@ -5,7 +5,7 @@ const wizzApp = {
       // CHICKEN
       {
         type: 'chicken',
-        wordsArr: [],
+        wordsArr: ['kfc'],
         score: 0
       },
       // COW
@@ -24,7 +24,7 @@ const wizzApp = {
   ]
 }
 
-// ALL OUR ANIMAL STUFF STUFF
+// ALL OUR ANIMAL STUFF
 const animalArr = wizzApp.category[0];
 const chickenObj = animalArr[0];
 const cowObj = animalArr[1];
@@ -41,18 +41,19 @@ const uniqueArr = function (arr) {
   });
 };
 
+const wordTypeKey = ['rel_jjb=', 'rel_jja=', 'rel_trg=', 'ml='];
+
+const chickenObjArr = [];
+for (let i = 0; i <= 3; i++) {
+  chickenObjArr.push(getWords(wordTypeKey[i], 'chicken'));
+}
+
 function getWords(wordType, animal) {
   return $.ajax({
     url: `https://api.datamuse.com//words?${wordType}${animal}`,
     dataType: 'json',
     method: 'GET'
   })
-}
-const wordTypeKey = ['rel_jjb=', 'rel_jja=', 'rel_trg=', 'ml='];
-
-const chickenObjArr = [];
-for (let i = 0; i <= 3; i++) {
-  chickenObjArr.push(getWords(wordTypeKey[i], 'chicken'));
 }
 
 const compiledChickenArr = [];
@@ -72,44 +73,101 @@ $.when(...chickenObjArr)
   });
 
 
+// === GAME ===//
+
+//Form
+wizzApp.handleSubmit = (animalTypeArr) => {
+  $('form').on('submit', function (event, animalTypeArr) {
+    console.log(`ANIMAL:`, animalTypeArr);
+    // prevent the default behaviour
+    event.preventDefault();
+    // grabs the user's input
+    let userInput = $('input').val();
+    //reset input field to nothing
+    $('input').val('');
+
+    //check user's guess against current list and if correct, add one
+    if (animalTypeArr.includes(userInput)) {
+      animalObj.score += 1;
+      //append correct guesses and colour them green
+      $('.user-guesses').append(`<li class="correct">${userInput}</li>`);
+      //update score
+      $('.score-counter').html(`<p>${animalObj.score}</p>`)
+    } else {
+      //if inputs do not match, still append but leave red
+      $('.user-guesses').append(`<li>${userInput}</li>`)
+    }
+    console.log(userInput)
+  })
+};
+
+
 // START GAME
+wizzApp.startGame = () => {
+  $(`.start-btn`).on(`click`, function () {
+    wizzApp.roundOne();
+  })
+  // roundOne(`chickenObj`);
+  // roundTwo();
+  // roundThree();
+  // endGame();
+ }
 
-
-const goToNextScreen = (btnName, currentScreen, nextScreen, main) => {
-  $(btnName).on('click', function () {
-    $(currentScreen).addClass('hide')
-    $(nextScreen).removeClass('hide')
-    $('.countdown-overlay').removeClass('hide')
-    $(main).removeClass('hide')
-    let timeleft = 3;
-    let timer = setInterval(function () {
-      $('.three-sec-timer').html(timeleft);
-      timeleft -= 1;
-      if (timeleft < 0) {
-        $('.countdown-overlay').addClass('hide');
-        let timeleft = 20;
-        let timer = setInterval(function () {
-          $('.play-timer').html(timeleft);
-          timeleft -= 1;
-          if (timeleft < 0) {
-            $('.game-play-screen').addClass('hide');
-            $('.round-result-screen').removeClass('hide');
-          }
-        }, 1000);
-      }
-    }, 1000);
-  });
+wizzApp.roundOne = () => {
+  wizzApp.handleSubmit(cleanChickenArr);
+  $(`.intro-screen`).addClass(`hide`);
+  $(`.game-play-screen`).removeClass(`hide`);
+  $(`.game-center`).removeClass(`hide`);
+  // $(`.next-round-btn`).on(`click`, roundTwo());
+  wizzApp.playGameRound(chickenObj.type);
 }
 
+wizzApp.playGameRound = (animalObj) => {
 
-function startGamePlay() {
-  goToNextScreen('.start-btn', '.intro-screen', '.game-play-screen', '.game-center');
+  $(`.score-counter`).html(`<p>${{animalObj}.score}</p>`);
+  $(`.countdown-overlay`).removeClass(`hide`);
+  let timeLeft = 3;
+  let timer = setInterval(function () {
+    $('.three-sec-timer').html(timeLeft);
+    timeLeft -= 1;
+    if (timeLeft < 0) {
+      wizzApp.playGame(animalObj);
+    }
+    //run the timer at 1 sec intervals
+  }, 1000);
+};
+
+wizzApp.playGame = (animalWord) => {
+  console.log(animalWord);
+  $(`.category-word`).html(`${animalWord}`);
+  $('.countdown-overlay').addClass('hide');
+  //start 20second timer
+  let timeLeft = 20;
+  let timer = setInterval(function () {
+    $('.play-timer').html(timeLeft);
+    timeLeft -= 1;
+    if (timeLeft === 0) {
+      $('.game-play-screen').addClass('hide');
+      wizzApp.showRoundResultScreen();
+    }
+  }, 1000);
 }
 
-startGamePlay();
+wizzApp.showRoundResultScreen = (currentRoundNum, nextRoundNum) => {
+  //load data for next round
 
+  //update values and display round results
+  $('.round-result-screen p span').html(`${{animalObj}.score}`);
+  $(`h2 span`).html(`${currentRoundNum}`);
+  $(`.next-round-btn span`).html(`${nextRoundNum}`);
+  $('.round-result-screen').removeClass('hide');
+}
 
-// DOCUMENT READY: Initialise quiz when DOM is ready and loaded
-// $(function () {
-//   wizzApp.init();
-// });
+wizzApp.init = () => {
+  wizzApp.startGame();
+}
+
+// DOC READY: Initialise quiz when DOM is ready and loaded
+$(function () {
+  wizzApp.init();
+});
