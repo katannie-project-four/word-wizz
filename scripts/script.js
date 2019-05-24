@@ -74,24 +74,25 @@ $.when(...chickenObjArr)
 // GAME PLAY STUFF
 
 // TIMER FUNCTION
-const elem = document.getElementsByClassName('.timer');
-let timerId = setInterval(countdown, 1000);
+// const timeLeft = 3;
+// const elem = document.getElementsByClassName('.timer');
+// let timerId = setInterval(countdown, 1000);
 
-function countdown (timeLeft) {
-  if (timeLeft == -1) {
-    clearTimeout(timerId);
-    hideOverlay();
-  } else {
-    elem.innerHTML = timeLeft;
-    timeLeft--;
-  }
-}
+// function countdown() {
+//   if (timeLeft == -1) {
+//     clearTimeout(timerId);
+//     hideOverlay();
+//   } else {
+//     // elem.innerHTML(`<p>${timeLeft}</p>`);
+//     timeLeft--;
+//   }
+// }
+
+
 
 // START GAME
 
-const hideOverlay = () => {
-  $('.countdown-overlay').addClass('hide')
-}
+
 
 const goToNextScreen = (btnName, currentScreen, nextScreen, main) => {
   $(btnName).on('click', function () {
@@ -99,12 +100,40 @@ const goToNextScreen = (btnName, currentScreen, nextScreen, main) => {
     $(nextScreen).removeClass('hide')
     $('.countdown-overlay').removeClass('hide')
     $(main).removeClass('hide')
-    countdown(3);
+    $(function () {
+      var timer = setInterval(function () {
+        $('.three-sec-timer').html(function (i, html) {
+
+          if (parseInt(html) > 0) {
+            return parseInt(html) - 1;
+          }
+          else {
+            $('.countdown-overlay').addClass('hide')
+          }
+        });
+
+      }, 1000);
+    });
   });
 }
 
-const startGamePlay = () => {
-  goToNextScreen('.start-btn', '.intro-screen', '.game-play-screen', '.countdown-overlay', '.game-center');
+
+
+// function handleTimer() {
+//   if (count === 0) {
+//     clearInterval(timer);
+//     hideOverlay();
+//   } else {
+//     $('.timer').html(count);
+//     count--;
+//   }
+// }
+
+// let count = 3;
+// let timer = setInterval(function () { handleTimer(count); }, 1000);
+
+function startGamePlay() {
+  goToNextScreen('.start-btn', '.intro-screen', '.game-play-screen', '.game-center');
 }
 
 startGamePlay();

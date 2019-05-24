@@ -1,5 +1,5 @@
 .countdown-overlay {
   @include position(absolute, 0,0,0,0);
   background: rgba(0,0,0,.2);
-  @include flex(column, nowrap, center, center);
+  // @include flex(column, nowrap, center, center);
 }
