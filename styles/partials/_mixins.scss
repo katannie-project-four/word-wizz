@@ -5,3 +5,11 @@
 	justify-content: $justify;
 	align-items: $align;
 }
+
+@mixin position ($pos, $top, $right, $bottom, $left) {
+  position: $pos;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
