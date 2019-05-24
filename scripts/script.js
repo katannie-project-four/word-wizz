@@ -116,19 +116,6 @@ const goToNextScreen = (btnName, currentScreen, nextScreen, main) => {
         }, 1000);
       }
     }, 1000);
-    // $(function () {
-    //   const timer = setInterval(function () {
-    //     $('.three-sec-timer').html(function (i, html) {
-
-    //       if (parseInt(html) > 0) {
-    //         return parseInt(html) - 1;
-    //       }
-    //       else {
-    //         $('.countdown-overlay').addClass('hide');
-    //       }
-    //     });
-    //   }, 1000);
-    // });
   });
 }
 
