@@ -75,9 +75,9 @@ $.when(...chickenObjArr)
 
 // TIMER FUNCTION
 const elem = document.getElementsByClassName('.timer');
-let timerId = setInterval(3, 1000);
+let timerId = setInterval(countdown, 1000);
 
-const countdown = (timeLeft) => {
+function countdown (timeLeft) {
   if (timeLeft == -1) {
     clearTimeout(timerId);
     hideOverlay();
