@@ -71,24 +71,6 @@ $.when(...chickenObjArr)
     chickenObj.wordsArr.push(...cleanChickenArr)
   });
 
-// GAME PLAY STUFF
-
-// TIMER FUNCTION
-// const timeLeft = 3;
-// const elem = document.getElementsByClassName('.timer');
-// let timerId = setInterval(countdown, 1000);
-
-// function countdown() {
-//   if (timeLeft == -1) {
-//     clearTimeout(timerId);
-//     hideOverlay();
-//   } else {
-//     // elem.innerHTML(`<p>${timeLeft}</p>`);
-//     timeLeft--;
-//   }
-// }
-
-
 
 // START GAME
 
@@ -119,23 +101,6 @@ const goToNextScreen = (btnName, currentScreen, nextScreen, main) => {
   });
 }
 
-
-
-
-
-
-// function handleTimer() {
-//   if (count === 0) {
-//     clearInterval(timer);
-//     hideOverlay();
-//   } else {
-//     $('.timer').html(count);
-//     count--;
-//   }
-// }
-
-// let count = 3;
-// let timer = setInterval(function () { handleTimer(count); }, 1000);
 
 function startGamePlay() {
   goToNextScreen('.start-btn', '.intro-screen', '.game-play-screen', '.game-center');
