@@ -1,8 +1,7 @@
 footer {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
     @include flex (row, nowrap, center, center);
-    background-color: #FAFAFA;
+    background-color: $lightgreen;
+    height: 40px;
+    width: 100%;
+    @include position(absolute, null, 0, 0, 0);
 }

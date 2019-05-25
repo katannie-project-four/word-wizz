@@ -1,21 +1,36 @@
-.countdown-overlay {
-  @include position(absolute, 0,0,0,0);
-  background: rgba(0,0,0,.2);
-  // @include flex(column, nowrap, center, center);
-  h2 {
-    @include position(absolute, 50%, 50%, null, null);
-  }
+.countdown-overlay  {
+  background-color: $watermelon;
 }
+
+.game-play-screen {
+  @include flex(column, nowrap, center, center);
+  .game-field {
+    width: 100%;
+  }
+  min-height: 50vh;
+}
+
+.countdown-overlay,
+.round-result-screen,
+.final-result-screen {
+  @include position(absolute,0,0,0,0);
+  @include flex(column, nowrap, center, center);
+}
+
+
+
 .timer {
+  @include flex(row, nowrap, center, center);
   width: 100px;
   height: 100px;
   border-radius: 50px;
-  background-color: #131313;
-  font-size: 3rem;
+  background-color: $black;
+  font-size: 2.8rem;
   color: #FAFAFA;
 }
 
 li {
+  list-style: none;
   color: red;
 }
 
@@ -25,23 +40,35 @@ li {
 
 .intro-screen {
   @include flex(column, nowrap, center, center);
-  text-align: center;
-  height: 100vh;
-  width: 70%;
-  margin: 0 auto;
+  margin: 100px auto;
   padding-bottom: 40px;
+  padding-right: 30px;
+  padding-left: 30px;
   p {
-    &:last-of-type{
-      margin-bottom: 30px;  
-    }
+    margin-left: 20px;
     &:first-of-type {
-      margin-top: 10px;
+      margin-bottom: 10px;
     }
     
-    
+  }
+  img {
+    width: 40%;
+  }
+  .how-to-container {
+    @include flex(row, nowrap, flex-start, center);
+    .how-to {
+      width: 60%;
+    }
   }
 }
 
+.intro-screen,
+.game-play-screen,
+.round-result-screen,
+.final-result-screen {
+  background-color: #FAFAFA;
+  border: 12px solid $lightgreen;
+}
 
 
 .hide {
