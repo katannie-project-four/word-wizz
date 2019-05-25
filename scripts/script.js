@@ -1,297 +1,284 @@
+//NAMESPACE: To keep app contained
+const wizApp = {}
 
-
-const wizzApp = {}
-
-wizzApp.category = [
+// =============== GLOBAL STATES  =============== //
+wizApp.guessedWords = [];
+wizApp.totalScore = [];
+wizApp.currentRoundNum = 0;
+wizApp.nextRoundNum = 1;
+wizApp.category = [
   // ANIMALS
   [
-    // CHICKEN
-    {
-      type: 'Chicken',
-      wordsArr: [],
+    { //chicken
+      type: `Chicken`,
+      words: [`kfc`],
       score: 0
     },
-    // COW
-    {
-      type: 'Cow',
-      wordsArr: [],
+    { //cow
+      type: `Cow`,
+      words: [`steak`],
       score: 0
     },
-    // FISH
-    {
-      type: 'Fish',
-      wordsArr: [],
+    { //fish
+      type: `Fish`,
+      words: [`wet`],
       score: 0
     }
   ]
-]
+];
 
-wizzApp.totalScore = [];
-// ALL OUR ANIMAL STUFF
-wizzApp.animalArr = wizzApp.category[0];
-wizzApp.chickenObj = wizzApp.animalArr[0];
-wizzApp.cowObj = wizzApp.animalArr[1];
-wizzApp.fishObj = wizzApp.animalArr[2];
+//Animal Reference
+wizApp.animalCategory = wizApp.category[0];
+wizApp.chicken = wizApp.animalCategory[0];
+wizApp.cow = wizApp.animalCategory[1];
+wizApp.fish = wizApp.animalCategory[2];
 
-wizzApp.finalChickenWordsArr = wizzApp.chickenObj.wordsArr;
-wizzApp.finalCowWordsArr = wizzApp.cowObj.wordsArr;
-wizzApp.finalFishWordsArr = wizzApp.fishObj.wordsArr;
+wizApp.finalChickenWords = wizApp.chicken.words;
+wizApp.finalCowWords = wizApp.cow.words;
+wizApp.finalFishWords = wizApp.fish.words;
+
+wizApp.chickenArr = [];
+wizApp.cowArr = [];
+wizApp.fishArr = [];
 
 
-wizzApp.guessedWords = [];
-// FILTER THROUGH ARRAY TO REMOVE DUPLICATES
-wizzApp.uniqueArr = function (arr) {
+// =============== API CALLS  =============== //
+//Keys needed for iterating through the four different endpoints
+wizApp.wordTypeKey = [`rel_jjb=`, `rel_jja=`, `rel_trg=`, `ml=`];
+
+// Filter Function through array to remove duplicate words
+wizApp.uniqueArr = function (arr) {
   return arr.filter(function (item, index) {
     return arr.indexOf(item) >= index;
   });
 };
 
-wizzApp.wordTypeKey = ['rel_jjb=', 'rel_jja=', 'rel_trg=', 'ml='];
-
-wizzApp.chickenObjArr = [];
-wizzApp.cowObjArr = [];
-wizzApp.fishObjArr = [];
-
-wizzApp.getWords = (wordType, animal) => {
+wizApp.getWords = (wordType, animal) => {
   return $.ajax({
     url: `https://api.datamuse.com//words?${wordType}${animal}`,
-    dataType: 'json',
-    method: 'GET'
+    dataType: `json`,
+    method: `GET`
   })
 }
 
+
+//Chicken API call
+wizApp.compiledChickenArr = [];
 for (let i = 0; i <= 3; i++) {
-  wizzApp.chickenObjArr.push(wizzApp.getWords(wizzApp.wordTypeKey[i], 'chicken'));
-
+  chickenArr = [];
+  wizApp.chickenArr.push(wizApp.getWords(wizApp.wordTypeKey[i], `chicken`));
 }
-
-for (let i = 0; i <= 3; i++) {
-  wizzApp.cowObjArr.push(wizzApp.getWords(wizzApp.wordTypeKey[i], 'cow'));
-
-}
-
-for (let i = 0; i <= 3; i++) {
-  wizzApp.fishObjArr.push(wizzApp.getWords(wizzApp.wordTypeKey[i], 'fish'));
-
-}
-
-
-wizzApp.compiledChickenArr = [];
-
-$.when(...wizzApp.chickenObjArr)
-  .then((...chickenWordsArr) => {
-    const pulledArray = chickenWordsArr.map((word) => {
-      return word[0];
-    })
-    for (i = 0; i <= 3; i++) {
-      pulledArray[i].forEach((chick) => {
-        wizzApp.compiledChickenArr.push(chick.word)
-      });
-    }
-    cleanChickenArr = wizzApp.uniqueArr(wizzApp.compiledChickenArr);
-    wizzApp.chickenObj.wordsArr.push(...cleanChickenArr)
+$.when(...wizApp.chickenArr).then((...chickenWords) => {
+  const pulledArray = chickenWords.map(word => {
+    return word[0];
   });
+  for (i = 0; i <= 3; i++) {
+    pulledArray[i].forEach(chick => {
+      wizApp.compiledChickenArr.push(chick.word);
+    });
+  }
+  cleanChickenArr = wizApp.uniqueArr(wizApp.compiledChickenArr);
+  wizApp.chicken.words.push(...cleanChickenArr);
+});
 
 
-wizzApp.compiledCowArr = [];
-
-$.when(...wizzApp.cowObjArr)
-  .then((...cowWordsArr) => {
-    const pulledArray = cowWordsArr.map((word) => {
-      return word[0];
-    })
-    for (i = 0; i <= 3; i++) {
-      pulledArray[i].forEach((cow) => {
-        wizzApp.compiledCowArr.push(cow.word)
-      });
-    }
-    cleanCowArr = wizzApp.uniqueArr(wizzApp.compiledCowArr);
-    wizzApp.cowObj.wordsArr.push(...cleanCowArr)
+//Cow API call
+wizApp.compiledCowArr = [];
+for (let i = 0; i <= 3; i++) {
+  wizApp.cowArr.push(wizApp.getWords(wizApp.wordTypeKey[i], `cow`));
+}
+$.when(...wizApp.cowArr).then((...cowWords) => {
+  const pulledArray = cowWords.map(word => {
+    return word[0];
   });
+  for (i = 0; i <= 3; i++) {
+    pulledArray[i].forEach(cow => {
+      wizApp.compiledCowArr.push(cow.word);
+    });
+  }
+  cleanCowArr = wizApp.uniqueArr(wizApp.compiledCowArr);
+  wizApp.cow.words.push(...cleanCowArr);
+});
 
-wizzApp.compiledFishArr = [];
 
-$.when(...wizzApp.fishObjArr)
-  .then((...fishWordsArr) => {
-    const pulledArray = fishWordsArr.map((word) => {
+//Fish API call
+wizApp.compiledFishArr = [];
+for (let i = 0; i <= 3; i++) {
+  wizApp.fishArr.push(wizApp.getWords(wizApp.wordTypeKey[i], `fish`));
+}
+$.when(...wizApp.fishArr)
+  .then((...fishWords) => {
+    const pulledArray = fishWords.map((word) => {
       return word[0];
     })
     for (i = 0; i <= 3; i++) {
       pulledArray[i].forEach((fish) => {
-        wizzApp.compiledFishArr.push(fish.word)
+        wizApp.compiledFishArr.push(fish.word)
       });
     }
-    cleanFishArr = wizzApp.uniqueArr(wizzApp.compiledFishArr);
-    wizzApp.fishObj.wordsArr.push(...cleanFishArr)
+    cleanFishArr = wizApp.uniqueArr(wizApp.compiledFishArr);
+    wizApp.fish.words.push(...cleanFishArr)
   });
 
 
-// === GAME ===//
+// =============== GAME FUNCTIONS  =============== //
 
-//Form
-wizzApp.handleSubmit = (animalArray, animalScore) => {
+//Form to handle user's guesses
+wizApp.handleSubmit = (animalCategoryay, animalScore) => {
   // grabs the user's input
-  let userInput = $('input').val().toLowerCase();
+  let userInput = $(`input`).val().toLowerCase();
   //reset input field to nothing
-  $('input').val('');
-  //check user's guess against current list and if correct, add one
-  // if (animalArray.includes(userInput)) {
-  //   animalScore.score += 1;
-
-        //check user's guess against current list and if correct, add one
+  $(`input`).val(``);
+    //check user`s guess against current list and if correct, add one
     if (
-      animalArray.includes(userInput) &&
-      !wizzApp.guessedWords.includes(userInput)
+      animalCategoryay.includes(userInput) &&
+      !wizApp.guessedWords.includes(userInput)
     ) {
       animalScore.score += 1;
-      wizzApp.guessedWords.push(userInput);
+      wizApp.guessedWords.push(userInput);
 
     //append correct guesses and colour them green
-    $('.user-guesses').append(`<li class="correct">${userInput}</li>`);
+    $(`.user-guesses`).append(`<li class="correct">${userInput}</li>`);
     //update score .;[]
-    $('.score-counter').html(`<p>${animalScore.score}</p>`)
+    $(`.score-counter`).html(`<p>${animalScore.score}</p>`)
   } else {
     //if inputs do not match, still append but leave red
-    $('.user-guesses').append(`<li>${userInput}</li>`)
+    $(`.user-guesses`).append(`<li>${userInput}</li>`)
   }
 };
 
-
-// START GAME
-//set current and next round numbers
-wizzApp.currentRoundNum = 0;
-wizzApp.nextRoundNum = 1;
-
-wizzApp.round = () => {
+// Start Game
+wizApp.round = () => {
   $(`.intro-screen`).addClass(`hide`);
   $(`.game-play-screen`).removeClass(`hide`);
   $(`.game-center`).removeClass(`hide`);
-  wizzApp.currentRoundNum += 1;
-  wizzApp.nextRoundNum += 1;
-  $('h2 span').html(`${wizzApp.currentRoundNum}`);
-  if (wizzApp.currentRoundNum === 1) {
-    wizzApp.playGameRound(wizzApp.chickenObj);
-  } else if (wizzApp.currentRoundNum === 2) {
-    wizzApp.playGameRound(wizzApp.cowObj);
-  } else if (wizzApp.currentRoundNum === 3) {
-    wizzApp.playGameRound(wizzApp.fishObj);
+  wizApp.currentRoundNum += 1;
+  wizApp.nextRoundNum += 1;
+  $(`h2 span`).html(`${wizApp.currentRoundNum}`);
+  if (wizApp.currentRoundNum === 1) {
+    wizApp.displayGameCountdown(wizApp.chicken);
+  } else if (wizApp.currentRoundNum === 2) {
+    wizApp.displayGameCountdown(wizApp.cow);
+  } else if (wizApp.currentRoundNum === 3) {
+    wizApp.displayGameCountdown(wizApp.fish);
   }
 }
 
-wizzApp.endGame = () => {
-  $('.final-result-screen').removeClass('hide');
-  $(`.game-center`).addClass('hide');
-  const sum = wizzApp.totalScore.reduce((total, a) => total+ a, 0);
-  $('p span').html(`${sum}`)
-}
-
-wizzApp.playGameRound = (animalObj) => {
+// Countdown for each round
+wizApp.displayGameCountdown = animalObj => {
   $(`.score-counter`).html(`<p>${animalObj.score}</p>`);
   $(`.countdown-overlay`).removeClass(`hide`);
   let timeLeft = 1;
-  let timer = setInterval(function () {
-    $('.three-sec-timer').html(timeLeft);
+  let timer = setInterval(function() {
+    $(`.three-sec-timer`).html(timeLeft);
     timeLeft -= 1;
     if (timeLeft < 0) {
       timeLeft = 1;
-      wizzApp.playGame(animalObj);
+      wizApp.playGame(animalObj);
       window.clearInterval(timer);
-      $('.three-sec-timer').html('');
+      $(`.three-sec-timer`).html(``);
     }
     //run the timer at 1 sec intervals
   }, 1000);
-
 };
 
-wizzApp.playGame = (animalObj) => {
+// Play the game
+wizApp.playGame = animalObj => {
   $(`.category-word`).html(`${animalObj.type}`);
-  $('.countdown-overlay').addClass('hide');
+  $(`.countdown-overlay`).addClass(`hide`);
   //start 20second timer
-  let timeLeft = 2;
-  let timer = setInterval(function () {
-    $('.play-timer').html(timeLeft);
+  let timeLeft = 30;
+  let timer = setInterval(function() {
+    $(`.play-timer`).html(timeLeft);
     timeLeft -= 1;
     if (timeLeft === 0) {
-      $('.game-play-screen').addClass('hide');
+      $(`.game-play-screen`).addClass(`hide`);
       window.clearInterval(timer);
-      $('.play-timer').html('')
-      wizzApp.showRoundResultScreen(animalObj);
+      $(`.play-timer`).html(``);
+      wizApp.displayRoundResultScreen(animalObj);
       //reset the guessedWords to an empty array for next round
-      wizzApp.guessedWords = []
+      wizApp.guessedWords = [];
     }
   }, 1000);
-}
+};
 
-wizzApp.showRoundResultScreen = (animalObj) => {
+// Display user score for the round
+wizApp.displayRoundResultScreen = (animalObj) => {
   //update values and display round results
-  $('.round-result-screen p span').html(`${animalObj.score}`);
-  wizzApp.totalScore.push(animalObj.score);
-  $(`h2 span`).html(`${wizzApp.currentRoundNum}`);
-  if (wizzApp.currentRoundNum === 3) {
+  $(`.round-result-screen p span`).html(`${animalObj.score}`);
+  wizApp.totalScore.push(animalObj.score);
+  $(`h2 span`).html(`${wizApp.currentRoundNum}`);
+  if (wizApp.currentRoundNum === 3) {
     $(`.next-round-btn`).html(`Go to your results!`).on(`click`, function () {
-      wizzApp.endGame();
+      wizApp.displayTotalScoreScreen();
     });
   } else {
-    $(`.next-round-btn span`).html(`${wizzApp.nextRoundNum}`);
+    $(`.next-round-btn span`).html(`${wizApp.nextRoundNum}`);
   }
-  $('.round-result-screen').removeClass('hide');
-  $('form').attr('id', `round-${wizzApp.nextRoundNum}`)
+  $(`.round-result-screen`).removeClass(`hide`);
+  $(`form`).attr(`id`, `round-${wizApp.nextRoundNum}`)
   // Add code to change id on form here
 }
 
-wizzApp.eventListeners = () => {
+wizApp.displayTotalScoreScreen = () => {
+  $(`.final-result-screen`).removeClass(`hide`);
+  $(`.game-center`).addClass(`hide`);
+  const sum = wizApp.totalScore.reduce((total, a) => total + a, 0);
+  $(`p span`).html(`${sum}`);
+};
+
+wizApp.eventListeners = () => {
 
   $(`.start-btn`).on(`click`, function () {
-    wizzApp.round();
+    wizApp.round();
   });
 
   //reset the game
-  $('.play-again-btn').on('click', function() {
+  $(`.play-again-btn`).on(`click`, function() {
     console.log(`clicked reset btn`);
     window.location.reload();
   });
 
- if (wizzApp.currentRoundNum < 3) {
-    $('.next-round-btn').on('click', function () {
-      $('.round-result-screen').addClass('hide');
-      $('li').addClass('hidden');
-      wizzApp.round();
+ if (wizApp.currentRoundNum < 3) {
+    $(`.next-round-btn`).on(`click`, function () {
+      $(`.round-result-screen`).addClass(`hide`);
+      $(`li`).addClass(`hidden`);
+      wizApp.round();
     });
   } 
-  else if (wizzApp.currentRoundNum === 3) {
+  else if (wizApp.currentRoundNum === 3) {
     $(".next-round-btn").on("click", function() {
       console.log("end gamebtn being clicked");
       $(".game-center").addClass("hide");
       $(".game-play-screen").addClass("hide");
       $(".round-result-screen").addClass("hide");
       $(".final-result-screen").removeClass("hide");
-      wizzApp.endGame();
+      wizApp.displayTotalScoreScreen();
     });
   }
 
-  
    
   //form handling user guesses
-  $('form').on('submit', function (event) {
+  $(`form`).on(`submit`, function (event) {
     // prevent the default behaviour
     event.preventDefault();
 
     const round = event.target.id;
-    if (round === 'round-one') {
-      wizzApp.handleSubmit(wizzApp.finalChickenWordsArr, wizzApp.chickenObj);
-    } else if (round === 'round-2') {
-      wizzApp.handleSubmit(wizzApp.finalCowWordsArr, wizzApp.cowObj);
+    if (round === `round-one`) {
+      wizApp.handleSubmit(wizApp.finalChickenWords, wizApp.chicken);
+    } else if (round === `round-2`) {
+      wizApp.handleSubmit(wizApp.finalCowWords, wizApp.cow);
     } else {
-      wizzApp.handleSubmit(wizzApp.finalFishWordsArr, wizzApp.fishObj);
+      wizApp.handleSubmit(wizApp.finalFishWords, wizApp.fish);
     } 
   })
 }
 
-wizzApp.init = () => {
-  wizzApp.eventListeners();
+wizApp.init = () => {
+  wizApp.eventListeners();
 }
 
 // DOC READY: Initialise quiz when DOM is ready and loaded
 $(function () {
-  wizzApp.init();
+  wizApp.init();
 });
