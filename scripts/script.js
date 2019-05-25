@@ -1,3 +1,24 @@
+<<<<<<< HEAD
+const wizzApp = {
+  category: [
+    // ANIMALS CATEGORY
+      [{
+        type: 'chicken',
+        wordsArr: ['kfc'],
+        score: 0
+      },
+      {
+        type: 'cow',
+        wordsArr: [],
+        score: 0
+      },
+      {
+        type: 'fish',
+        wordsArr: [],
+        score: 0
+      }
+    ]
+=======
 
 // check to see if this is visible
 const wizzApp = {}
@@ -23,6 +44,7 @@ wizzApp.category = [
       wordsArr: [],
       score: 0
     }
+>>>>>>> 19d15df7b9294ce881c4573a9f3d2c1d762068af
   ]
 ]
 
@@ -129,6 +151,10 @@ $.when(...wizzApp.fishObjArr)
 // === GAME ===//
 
 //Form
+<<<<<<< HEAD
+wizzApp.handleSubmit = () => {
+  let chickenScore = chickenObj.score;
+=======
 wizzApp.handleSubmit = (animalArray, animalScore) => {
   // grabs the user's input
   let userInput = $('input').val().toLowerCase();
@@ -137,6 +163,7 @@ wizzApp.handleSubmit = (animalArray, animalScore) => {
   //check user's guess against current list and if correct, add one
   if (animalArray.includes(userInput)) {
     animalScore.score += 1;
+>>>>>>> 19d15df7b9294ce881c4573a9f3d2c1d762068af
 
     //append correct guesses and colour them green
     $('.user-guesses').append(`<li class="correct">${userInput}</li>`);
@@ -174,9 +201,14 @@ wizzApp.nextRoundNum = 1;
 // wizzApp.roundThree = () => {
 //   wizzApp.playGameRound(wizzApp.fishObj);
 
+<<<<<<< HEAD
+wizzApp.roundOne = () => {
+  wizzApp.handleSubmit();
+=======
 // }
 
 wizzApp.round = () => {
+>>>>>>> 19d15df7b9294ce881c4573a9f3d2c1d762068af
   $(`.intro-screen`).addClass(`hide`);
   $(`.game-play-screen`).removeClass(`hide`);
   $(`.game-center`).removeClass(`hide`);
