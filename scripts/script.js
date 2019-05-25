@@ -1,5 +1,7 @@
 
 // check to see if this is visible
+// this needs to be visible
+
 const wizzApp = {}
 
 wizzApp.category = [
