@@ -46,19 +46,20 @@
 
       <!-- GAME SCREEN -->
       <div class="game-play-screen hide">
-        <h2>Round <span>One</span></h2>
+        <div class="container">
+          <h2>Round <span>One</span></h2>
+          <div class="timer play-timer"></div>
+        </div>
         <div class="game-field">
           <h3>Your word is: <span class="category-word"></span></h3>
           <label for="user-input">Type your word here</label>
           <form action="" id="round-one">
-            <input type="text" id="user-input" placeholder="Wizz out!">
+            <input type="text" id="user-input" placeholder="Wiz out!">
           </form>
-          <div class="timer play-timer"></div>
         </div>
+        <p>Score: <span class="score-counter"></span></p>
         <div class="user-guesses">
-          <p>Score: <span class="score-counter"></span></p>
         </div>
-
       </div>
 
       <!-- ROUND RESULT SCREEN-->
