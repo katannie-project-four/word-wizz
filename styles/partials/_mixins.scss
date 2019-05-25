@@ -1,3 +1,9 @@
+
+// VARIABLES
+$font-primary: 'Lato', sans-serif;
+$font-secondary: 'Love Ya Like A Sister', cursive;
+
+// MIXINS
 @mixin flex($direction, $wrap, $justify, $align) {
 	display: flex;
 	flex-direction: $direction;
