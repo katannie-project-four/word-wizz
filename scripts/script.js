@@ -1,4 +1,5 @@
 
+// check to see if this is visible
 const wizzApp = {}
 
 wizzApp.category = [
