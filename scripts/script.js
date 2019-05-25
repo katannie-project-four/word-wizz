@@ -1,20 +1,16 @@
 const wizzApp = {
   category: [
-    // ANIMALS
-    [
-      // CHICKEN
-      {
+    // ANIMALS CATEGORY
+      [{
         type: 'chicken',
         wordsArr: ['kfc'],
         score: 0
       },
-      // COW
       {
         type: 'cow',
         wordsArr: [],
         score: 0
       },
-      // FISH
       {
         type: 'fish',
         wordsArr: [],
@@ -76,7 +72,7 @@ $.when(...chickenObjArr)
 // === GAME ===//
 
 //Form
-wizzApp.handleSubmitOne = () => {
+wizzApp.handleSubmit = () => {
   let chickenScore = chickenObj.score;
 
   $('form').on('submit', function (chickenScore) {
@@ -115,7 +111,7 @@ wizzApp.startGame = () => {
 }
 
 wizzApp.roundOne = () => {
-  wizzApp.handleSubmitOne();
+  wizzApp.handleSubmit();
   $(`.intro-screen`).addClass(`hide`);
   $(`.game-play-screen`).removeClass(`hide`);
   $(`.game-center`).removeClass(`hide`);
