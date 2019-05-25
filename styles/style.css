@@ -170,6 +170,12 @@ html {
   font-size: 125%;
 }
 
+.btn:focus,
+input:focus {
+  -webkit-box-shadow: 3px -3px 15px #007785, -3px 3px 15px #007785;
+          box-shadow: 3px -3px 15px #007785, -3px 3px 15px #007785;
+}
+
 .flex-center {
   display: -webkit-box;
   display: -ms-flexbox;

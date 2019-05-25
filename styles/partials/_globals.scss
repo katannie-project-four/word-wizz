@@ -2,6 +2,14 @@ html {
     font-size: 125%;
 }
 
+.btn, 
+input {
+    &:focus {
+        box-shadow: 3px -3px 15px $darkgreen, -3px 3px 15px $darkgreen;
+    }
+    
+}
+
 .flex-center {
     @include flex(column, nowrap, center, center);
 }
