@@ -2,6 +2,17 @@
   @include position(absolute, 0,0,0,0);
   background: rgba(0,0,0,.2);
   // @include flex(column, nowrap, center, center);
+  h2 {
+    @include position(absolute, 50%, 50%, null, null);
+  }
+}
+.timer {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: #131313;
+  font-size: 3rem;
+  color: #FAFAFA;
 }
 
 li {
@@ -10,4 +21,32 @@ li {
 
 .correct {
   color: green;
+}
+
+.intro-screen {
+  @include flex(column, nowrap, center, center);
+  text-align: center;
+  height: 100vh;
+  width: 70%;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  p {
+    &:last-of-type{
+      margin-bottom: 30px;  
+    }
+    &:first-of-type {
+      margin-top: 10px;
+    }
+    
+    
+  }
+}
+
+
+
+.hide {
+    display: none;
+}
+.hidden {
+  display: none;
 }

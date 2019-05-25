@@ -16,11 +16,15 @@
     <div class="intro-screen">
       <h1>word wizz</h1>
       <h2>How to Play</h2>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla quasi itaque aut sapiente dolorum consectetur
-        officiis? Magnam ut nobis sit dolores corrupti earum numquam itaque doloribus, error esse placeat, minus
-        laboriosam, mollitia ad aspernatur enim eius! Obcaecati a blanditiis maiores odit facere sed reprehenderit fugit
-        est ullam, officia consequatur magni dolorum recusandae tempora atque expedita numquam pariatur perspiciatis et
-        sapiente, assumenda fugiat! At, reiciendis eos error neque officia minus quo!</p>
+      <p>Every round the Wizard will give you a key word. You will have 20 seconds to input all the
+        adjective, nouns,
+        etc. that you think of when you read the key word. Make sure to think outside the box! For example, if you had
+        the word Reptile, you could type out any one of these words: extinct, scaly, gecko, tiny, tropical, dinosaur.
+      </p>
+      <p>Type out the word in the Wizz Out! section and hit ENTER. To make sure the Wizard can understand your word,
+        have the
+        correct spelling. If your word matches our Wizard's word list you get a point! Accumulate as
+        many points as you can and find out if you can out wizz our Wizard! </p>
       <button class="btn start-btn">start</a>
     </div>
 
@@ -39,7 +43,7 @@
         <div class="game-field">
           <h3>Your word is: <span class="category-word">Chicken</span></h3>
           <label for="user-input">Type your word here</label>
-          <form action="">
+          <form action="" id="round-one">
             <input type="text" id="user-input" placeholder="Wizz out!">
           </form>
           <div class="timer play-timer"></div>
@@ -74,12 +78,10 @@
       </p>
     </footer>
   </div>
-
   <!-- SCRIPTS -->
   <script src='https://code.jquery.com/jquery-3.2.1.min.js'
     integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=' crossorigin='anonymous'></script>
   <script src="./scripts/script.js"></script>
-
 
 </body>
 
