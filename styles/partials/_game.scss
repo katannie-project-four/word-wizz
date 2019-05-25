@@ -1,13 +1,64 @@
 .countdown-overlay  {
   background-color: $watermelon;
+  z-index: 1;
 }
 
 .game-play-screen {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: relative;
   @include flex(column, nowrap, center, center);
   .game-field {
     width: 100%;
   }
+  .container {
+    @include flex (row, nowrap, center, center);
+  }
   min-height: 50vh;
+  .user-guesses {
+    @include position(absolute, 20px, null, null, 20px);
+  }
+  text-align: center;
+  .play-timer {
+    @include position(absolute, 20px, 20px, null, null);
+  }
+  p span {
+    font-size: 2rem;
+    color: $correct;
+  }
+  label {
+    color: $darkgreen;
+  }
+  input{
+    border: 0;
+    color: $black;
+    background: $lightgreen;
+    padding: 10px;
+    margin-top: 10px;
+    border: 2px dotted $darkgreen;
+  }
+}
+
+li {
+  font-size: 1.3rem;
+  list-style: none;
+  color: $watermelon;
+}
+
+.round-result-screen {
+  p {
+    font-size: 2rem;
+    &:last-of-type {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.final-result-screen {
+  p {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
 }
 
 .countdown-overlay,
@@ -29,13 +80,9 @@
   color: #FAFAFA;
 }
 
-li {
-  list-style: none;
-  color: red;
-}
 
 .correct {
-  color: green;
+  color: $correct;
 }
 
 .intro-screen {
@@ -59,6 +106,9 @@ li {
     .how-to {
       width: 60%;
     }
+  }
+  h2 {
+    margin-top: 0;
   }
 }
 

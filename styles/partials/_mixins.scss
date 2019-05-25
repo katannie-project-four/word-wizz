@@ -8,6 +8,7 @@ $lightgreen: #d6e6d5;
 $watermelon: #ff8170;
 $grey: #535353;
 $black: #262626;
+$correct: #2E8B57;
 
 // MIXINS
 @mixin flex($direction, $wrap, $justify, $align) {
@@ -24,4 +25,11 @@ $black: #262626;
   right: $right;
   bottom: $bottom;
   left: $left;
+}
+
+//Adopted from https://thoughtbot.com/blog/sasss-content-directive
+@mixin media($width) {
+  @media (min-width: $width) {
+    @content;
+  }  
 }

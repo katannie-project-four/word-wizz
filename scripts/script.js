@@ -59,7 +59,7 @@ wizApp.getWords = (wordType, animal) => {
     dataType: `json`,
     method: `GET`
   })
-}
+};
 
 
 //Chicken API call
@@ -130,13 +130,9 @@ wizApp.handleSubmit = (animalCategoryay, animalScore) => {
   //reset input field to nothing
   $(`input`).val(``);
     //check user`s guess against current list and if correct, add one
-    if (
-      animalCategoryay.includes(userInput) &&
-      !wizApp.guessedWords.includes(userInput)
-    ) {
+  if (animalCategoryay.includes(userInput) && !wizApp.guessedWords.includes(userInput)) {
       animalScore.score += 1;
       wizApp.guessedWords.push(userInput);
-
     //append correct guesses and colour them green
     $(`.user-guesses`).append(`<li class="correct">${userInput}</li>`);
     //update score .;[]
@@ -147,7 +143,6 @@ wizApp.handleSubmit = (animalCategoryay, animalScore) => {
   }
 };
 
-// Start Game
 wizApp.round = () => {
   $(`.intro-screen`).addClass(`hide`);
   $(`.game-play-screen`).removeClass(`hide`);
@@ -168,12 +163,12 @@ wizApp.round = () => {
 wizApp.displayGameCountdown = animalObj => {
   $(`.score-counter`).html(`<p>${animalObj.score}</p>`);
   $(`.countdown-overlay`).removeClass(`hide`);
-  let timeLeft = 1;
+  let timeLeft = 3;
   let timer = setInterval(function() {
     $(`.three-sec-timer`).html(timeLeft);
     timeLeft -= 1;
     if (timeLeft < 0) {
-      timeLeft = 1;
+      timeLeft = 3;
       wizApp.playGame(animalObj);
       window.clearInterval(timer);
       $(`.three-sec-timer`).html(``);

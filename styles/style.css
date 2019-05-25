@@ -170,6 +170,12 @@ html {
   font-size: 125%;
 }
 
+.btn:focus,
+input:focus {
+  -webkit-box-shadow: 3px -3px 15px #007785, -3px 3px 15px #007785;
+          box-shadow: 3px -3px 15px #007785, -3px 3px 15px #007785;
+}
+
 .flex-center {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -248,10 +254,14 @@ button {
 
 h2 {
   font-size: 2.5rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 h3 {
   font-size: 2rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 a {
@@ -283,9 +293,13 @@ button:hover {
 
 .countdown-overlay {
   background-color: #ff8170;
+  z-index: 1;
 }
 
 .game-play-screen {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -302,10 +316,78 @@ button:hover {
       -ms-flex-align: center;
           align-items: center;
   min-height: 50vh;
+  text-align: center;
 }
 
 .game-play-screen .game-field {
   width: 100%;
+}
+
+.game-play-screen .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.game-play-screen .user-guesses {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.game-play-screen .play-timer {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.game-play-screen p span {
+  font-size: 2rem;
+  color: #2E8B57;
+}
+
+.game-play-screen label {
+  color: #007785;
+}
+
+.game-play-screen input {
+  border: 0;
+  color: #262626;
+  background: #d6e6d5;
+  padding: 10px;
+  margin-top: 10px;
+  border: 2px dotted #007785;
+}
+
+li {
+  font-size: 1.3rem;
+  list-style: none;
+  color: #ff8170;
+}
+
+.round-result-screen p {
+  font-size: 2rem;
+}
+
+.round-result-screen p:last-of-type {
+  margin-bottom: 20px;
+}
+
+.final-result-screen p {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
 .countdown-overlay,
@@ -357,13 +439,8 @@ button:hover {
   color: #FAFAFA;
 }
 
-li {
-  list-style: none;
-  color: red;
-}
-
 .correct {
-  color: green;
+  color: #2E8B57;
 }
 
 .intro-screen {
@@ -420,6 +497,10 @@ li {
 
 .intro-screen .how-to-container .how-to {
   width: 60%;
+}
+
+.intro-screen h2 {
+  margin-top: 0;
 }
 
 .intro-screen,
