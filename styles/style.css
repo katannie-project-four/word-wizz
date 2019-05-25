@@ -250,6 +250,10 @@ h2 {
   font-size: 2.5rem;
 }
 
+h3 {
+  font-size: 2rem;
+}
+
 a {
   text-decoration: none;
   color: #007785;
@@ -277,13 +281,36 @@ button:hover {
   border: 5px solid #007785;
 }
 
-.countdown-overlay,
-.round-result-screen,
-.final-result-screen {
+.countdown-overlay {
   background-color: #ff8170;
 }
 
-.countdown-overlay {
+.game-play-screen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 50vh;
+}
+
+.game-play-screen .game-field {
+  width: 100%;
+}
+
+.countdown-overlay,
+.round-result-screen,
+.final-result-screen {
   position: absolute;
   top: 0;
   right: 0;
@@ -331,6 +358,7 @@ button:hover {
 }
 
 li {
+  list-style: none;
   color: red;
 }
 
@@ -429,6 +457,10 @@ footer {
   background-color: #d6e6d5;
   height: 40px;
   width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 /* Wizard Image by GraphicMama-team from "https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1454385" */
