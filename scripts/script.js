@@ -253,8 +253,9 @@ wizzApp.eventListeners = () => {
     wizzApp.round();
   });
 
-  if (wizzApp.nextRoundNum > 3) {
+  if (wizzApp.currentRoundNum > 2) {
     $('.next-round-btn').on('click', function () {
+      console.log('succes')
       $('.game-center').addClass('hide');
       $('.game-play-screen').addClass('hide');
       $('.round-result-screen').addClass('hide')
@@ -265,6 +266,7 @@ wizzApp.eventListeners = () => {
     $('.next-round-btn').on('click', function () {
       $('.round-result-screen').addClass('hide');
       $('li').addClass('hidden');
+      console.log('no success')
       wizzApp.round();
     });
   }
@@ -274,9 +276,10 @@ wizzApp.eventListeners = () => {
     event.preventDefault();
 
     const round = event.target.id;
+    console.log(round)
     if (round === 'round-one') {
       wizzApp.handleSubmit(wizzApp.finalChickenWordsArr, wizzApp.chickenObj);
-    } else if (round === 'round-two') {
+    } else if (round === 'round-2') {
       wizzApp.handleSubmit(wizzApp.finalCowWordsArr, wizzApp.cowObj);
     } else {
       wizzApp.handleSubmit(wizzApp.finalFishWordsArr, wizzApp.fishObj);
