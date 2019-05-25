@@ -3,6 +3,12 @@
 $font-primary: 'Lato', sans-serif;
 $font-secondary: 'Love Ya Like A Sister', cursive;
 
+$darkgreen: #007785;
+$lightgreen: #d6e6d5;
+$watermelon: #ff8170;
+$grey: #535353;
+$black: #262626;
+
 // MIXINS
 @mixin flex($direction, $wrap, $justify, $align) {
 	display: flex;
