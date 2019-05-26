@@ -2,11 +2,12 @@ footer {
     text-align: center;
     @include flex (row, nowrap, center, center);
     background-color: $lightblue;
-    height: 44px;
+    min-height: 44px;
     width: 100%;
     font-size: .8rem;
     @include position(absolute, null, 0, 0, 0);
-
+    line-height: 1.5;
+    padding: 10px;
     a {
         text-decoration: none;
         padding: 0 5px;

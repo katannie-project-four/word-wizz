@@ -11,7 +11,7 @@ wizApp.category = [
   [
     { //chicken
       type: `Chicken`,
-      words: [`kfc`, `wing`, `feather`, `beak`,  `peak`, `fly`],
+      words: [`kfc`, `wing`, `feather`, `beak`, `peak`, `fly`],
       score: 0
     },
     { //cow
@@ -53,8 +53,9 @@ wizApp.uniqueArr = function (arr) {
   })
 };
 
+// ajax call
 wizApp.getWords = (wordType, animal) => {
-return $.ajax ({
+  return $.ajax({
     url: `https://api.datamuse.com//words?${wordType}${animal}`,
     dataType: `json`,
     method: `GET`
@@ -67,6 +68,7 @@ for (let i = 0; i <= 3; i++) {
   chickenObjsFromAPI = [];
   wizApp.chickenObjsFromAPI.push(wizApp.getWords(wizApp.wordTypeKey[i], `chicken`));
 }
+// WHEN the call has been settled THEN push arrays for adj, noun, target words, and means like words (4 arrays) into one array.. then take the arrays and only pull out the content that matters (i.e. only the words) ..then clean the array and filter out the duplicates and push to the final array
 $.when(...wizApp.chickenObjsFromAPI).then((...chickenWords) => {
   const pulledArray = chickenWords.map(word => {
     return word[0];
@@ -130,8 +132,8 @@ wizApp.handleSubmit = (animalCategory, animalScore) => {
   $(`input`).val(``);
   // Check user's guess against current list and if correct, add one
   if (animalCategory.includes(userInput) && !wizApp.guessedWords.includes(userInput)) {
-      animalScore.score += 1;
-      wizApp.guessedWords.push(userInput);
+    animalScore.score += 1;
+    wizApp.guessedWords.push(userInput);
     // Append correct guesses and colour them green
     $(`.user-guesses`).append(`<li class="correct">${userInput}</li>`);
     // Update score
@@ -144,12 +146,16 @@ wizApp.handleSubmit = (animalCategory, animalScore) => {
 
 // Set-up for cycling through rounds
 wizApp.round = () => {
+  // show / hide the appropirate screens
   $(`.intro-screen`).addClass(`hide`);
   $(`.game-play-screen`).removeClass(`hide`);
   $(`.game-center`).removeClass(`hide`);
+  // increase the round number and next round number
   wizApp.currentRoundNum += 1;
   wizApp.nextRoundNum += 1;
+  // dynamically change the round numbers in the game
   $(`h2 span`).html(`${wizApp.currentRoundNum}`);
+  // only show chicken words at round 1, cow words at round 2, fish words at round 3
   if (wizApp.currentRoundNum === 1) {
     wizApp.displayGameCountdown(wizApp.chicken);
   } else if (wizApp.currentRoundNum === 2) {
@@ -161,17 +167,19 @@ wizApp.round = () => {
 
 // Countdown screen for each round
 wizApp.displayGameCountdown = animal => {
+  // show the user's score
   $(`.score-counter`).html(`<p>${animal.score}</p>`);
   $(`.countdown-screen`).removeClass(`hide`);
   // Reset input field to nothing before each round
   $(`input`).val(``);
   // Set the count-down timer to 3
   let timeLeft = 3;
-  let timer = setInterval(function() {
+  let timer = setInterval(function () {
     $(`.three-sec-timer`).html(timeLeft);
     timeLeft -= 1;
     if (timeLeft < 0) {
       timeLeft = 3;
+      // when the timer runs out run the play game function and reset the timer
       wizApp.playGame(animal);
       window.clearInterval(timer);
       $(`.three-sec-timer`).html(``);
@@ -190,7 +198,7 @@ wizApp.playGame = animal => {
   $(`.countdown-screen`).addClass(`hide`);
   // Start timer for the game rounds
   let timeLeft = 20;
-  let timer = setInterval(function() {
+  let timer = setInterval(function () {
     $(`.play-timer`).html(timeLeft);
     timeLeft -= 1;
     if (timeLeft === 0) {
@@ -215,6 +223,9 @@ wizApp.displayRoundResultScreen = (animal) => {
     $(`.next-round-btn`).focus().html(`Did you out-wiz our Wizard?`).on(`click`, function () {
       wizApp.displayTotalScoreScreen();
     });
+    if ($(window).width() <= 340) {
+      $(`.next-round-btn`).focus().html(`Go to results!`);
+    }
   } else {
     $(`.next-round-btn span`).html(`${wizApp.nextRoundNum}`);
   }
@@ -229,13 +240,13 @@ wizApp.displayTotalScoreScreen = () => {
   const sum = wizApp.totalScore.reduce((total, a) => total + a, 0);
   $(`p span`).html(`${sum}`);
   // Custom messages for user based on their score
-  if (wizApp.totalScore <= 5) {
+  if (sum <= 5) {
     $(`.result-msg`).html(`Sorry, you totally got out-wized by our wizard! Study up and better luck next time!`)
-  } else if (wizApp.totalScore >= 6 && wizApp.totalScore <= 15) {
+  } else if (sum >= 6 && sum <= 15) {
     $(`.result-msg`).html(`Not too shabby. But you need to study a bit more to out-wiz our Wizard!`)
-  } else if (wizApp.totalScore >= 16 && wizApp.totalScore <= 20) {
+  } else if (sum >= 16 && sum <= 20) {
     $(`.result-msg`).html(`Great job! You're on the same level as our wizard but didn't quite out-wiz him!`)
-  } else if (wizApp.totalScore >= 21) {
+  } else if (sum >= 21) {
     $(`.result-msg`).html(`Well, we have a smarty-pants with us, don't we? You out-wized our wizard with your extraordinary score!`)
   }
 };
@@ -257,7 +268,7 @@ wizApp.eventListeners = () => {
   } // If on final round (3), go to the final results score screen
   else if (wizApp.currentRoundNum === 3) {
     // Auto-focus on next-round button
-    $(`.next-round-btn`).focus().on(`click`, function() {
+    $(`.next-round-btn`).focus().on(`click`, function () {
       $(`.game-center`).addClass(`hide`);
       $(`.game-play-screen`).addClass(`hide`);
       $(`.round-result-screen`).addClass(`hide`);
@@ -265,7 +276,7 @@ wizApp.eventListeners = () => {
       wizApp.displayTotalScoreScreen();
     });
   };
-   
+
   // Form handling for user user guesses
   $(`form`).on(`submit`, function (event) {
     // Prevent the default behaviour
@@ -277,11 +288,11 @@ wizApp.eventListeners = () => {
       wizApp.handleSubmit(wizApp.finalCowWords, wizApp.cow);
     } else {
       wizApp.handleSubmit(wizApp.finalFishWords, wizApp.fish);
-    } 
+    }
   });
 
   // Auto-focus and reset the game when play again button is clicked
-  $(`.play-again-btn`).focus().on(`click`, function() {
+  $(`.play-again-btn`).focus().on(`click`, function () {
     console.log(`clicked reset btn`);
     window.location.reload();
   });

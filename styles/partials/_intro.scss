@@ -2,26 +2,52 @@
   @include flex(column, nowrap, center, center);
   margin: 100px auto;
   padding: 0 30px 40px;
+  @include media(550px) {
+    margin-bottom: 120px;
+  }
+  @include media(500px) {
+    padding: 0 15px 40px;
+    margin-right: 10px;
+  }
   p {
     margin-left: 20px;
+    @include media(500px) {
+      margin-left: 10px;
+    }
     &:first-of-type {
       margin-bottom: 10px;
     } 
+    @include media(400px) {
+      font-size: 0.9rem;
+    }
   }
   .how-to-container {
     @include flex(row, nowrap, flex-start, center);
+    @include media(851px) {
+      @include flex(column, nowrap, flex-start, flex-start);
+    }
     .how-to-txt {
       width: 70%;
+      @include media(851px) {
+        order: 2;
+        width: 100%;
+      }
     }
     .how-to-img {
       width: 50%;
       margin-right: -8rem;
-      
+      @include media(851px) {
+        order: 1;
+        width: 100%;
+      }
     }
   }
   h1 {
     text-align: center;
     font-size: 6rem;
+    @include media(851px) {
+      font-size: 4rem;
+    }
     margin-top: -4.2rem;
     margin-bottom: -.5rem;
     background-color: $lightpurple;
@@ -44,10 +70,17 @@
 
   ol {
     margin-top: 0;
+    @include media(500px) {
+      padding-left: 30px;
+    }
     li {
       list-style: decimal;
       color: $black;
       font-size: 1rem;
+      @include media(400px) {
+        font-size: 0.9rem;
+        margin: 5px 0;
+      }
       span {
         // background-color: $lightblue;
         font-weight: 600;
