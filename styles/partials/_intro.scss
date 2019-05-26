@@ -8,16 +8,33 @@
     margin-left: 20px;
     &:first-of-type {
       margin-bottom: 10px;
-    }
-    
-  }
-  img {
-    width: 40%;
+    } 
   }
   .how-to-container {
     @include flex(row, nowrap, flex-start, center);
-    .how-to {
-      width: 60%;
+    .how-to-txt {
+      width: 70%;
+    }
+    .how-to-img {
+      width: 50%;
+      margin-right: -8rem;
+      
+    }
+  }
+  h1 {
+    text-align: center;
+    font-size: 6rem;
+    margin-top: -4.2rem;
+    margin-bottom: -.5rem;
+    background-color: $lightpurple;
+    padding: 0 5%;
+    @include box-shadow(12px, 12px, $lightblue);
+    @include text-shadow(5px, 3px, $darkpurple);
+    @include media(1350px) {
+      margin-bottom: 1rem;
+    }
+     @include media(1150px) {
+      margin-bottom: 2rem;
     }
   }
   h2 {
@@ -38,7 +55,13 @@
   }
 
   button {
+    margin-top: -.5rem;
     margin-bottom: -4.2rem;
-    margin-top: 2rem;
+    @include media(1400px) {
+      margin-top: 1rem;
+    }
+     @include media(1150px) {
+      margin-top: 2rem;
+    }
   }
 }

@@ -35,9 +35,9 @@ $correct: #2E8B57;
   text-shadow: $x $y $color;
 }
 
-//Adopted from https://thoughtbot.com/blog/sasss-content-directive
+//Thanks to https://thoughtbot.com/blog/sasss-content-directive
 @mixin media($width) {
-  @media (min-width: $width) {
+  @media (max-width: $width) {
     @content;
   }  
 }

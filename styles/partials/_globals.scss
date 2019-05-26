@@ -2,12 +2,15 @@ html {
     font-size: 125%;
 }
 
-.btn, 
-input {
-    &:focus {
-        box-shadow: 3px -3px 15px $darkpurple, -3px 3px 15px $darkpurple;
-    }
-    
+body {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    font-family: $font-primary;
+    color: $black;
+    @include flex(column, nowrap, center, center);
+    overflow-x: hidden;
+    background-image: url(./../assets/bg-pattern.png);
 }
 
 .flex-center {
@@ -20,14 +23,18 @@ input {
     margin: 0 auto;
 }
 
-body {
-    position: relative;
-    width: 100vw;
-    min-height: 100vh;
-    font-family: $font-primary;
-    color: $black;
-    @include flex(column, nowrap, center, center);
-    background-image: url(./../assets/bg-pattern.png);
+img {
+    display: block;
+    width: 100%;
+    min-width: 100%;
+}
+
+.btn, 
+input {
+    &:focus {
+        box-shadow: 3px -3px 15px $darkpurple, -3px 3px 15px $darkpurple;
+    }
+    
 }
 
 p,
@@ -57,17 +64,6 @@ h2 {
     color: #fff;
 }
 
-h1 {
-    text-align: center;
-    font-size: 5.5rem;
-    margin-top: -4.2rem;
-    margin-bottom: 2rem;
-    background-color: $lightpurple;
-    padding: 0 5%;
-    @include box-shadow(12px, 12px, $lightblue);
-    @include text-shadow(5px, 3px, $darkpurple);
-}
-
 h2 {
     font-size: 2.6rem;
     font-size: 1.4rem;
@@ -90,7 +86,7 @@ button {
     font-size: 1.5rem;
     transition: all 0.3s;
     &:hover {
-        border: 10px solid $darkpurple;
+        border: 10px solid $lightpurple;
     }
 }   
 
