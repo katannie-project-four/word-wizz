@@ -37,9 +37,9 @@ wizApp.finalChickenWords = wizApp.chicken.words;
 wizApp.finalCowWords = wizApp.cow.words;
 wizApp.finalFishWords = wizApp.fish.words;
 
-wizApp.chickenResultsAPI = [];
-wizApp.cowResultsAPI = [];
-wizApp.fishResultsAPI = [];
+wizApp.chickenObjsFromAPI = [];
+wizApp.cowObjsFromAPI = [];
+wizApp.fishObjsFromAPI = [];
 
 
 // =============== API CALLS  =============== //
@@ -62,61 +62,61 @@ return $.ajax ({
 };
 
 // Chicken API call
-wizApp.compiledChickenArray = [];
+wizApp.compiledChickenArr = [];
 for (let i = 0; i <= 3; i++) {
-  chickenResultsAPI = [];
-  wizApp.chickenResultsAPI.push(wizApp.getWords(wizApp.wordTypeKey[i], `chicken`));
+  chickenObjsFromAPI = [];
+  wizApp.chickenObjsFromAPI.push(wizApp.getWords(wizApp.wordTypeKey[i], `chicken`));
 }
-$.when(...wizApp.chickenResultsAPI).then((...chickenWords) => {
+$.when(...wizApp.chickenObjsFromAPI).then((...chickenWords) => {
   const pulledArray = chickenWords.map(word => {
     return word[0];
   });
   for (i = 0; i <= 3; i++) {
     pulledArray[i].forEach(chick => {
-      wizApp.compiledChickenArray.push(chick.word);
+      wizApp.compiledChickenArr.push(chick.word);
     });
   }
-  cleanChickenResultsAPI = wizApp.uniqueArr(wizApp.compiledChickenArray);
-  wizApp.chicken.words.push(...cleanChickenResultsAPI);
+  cleanChickenArr = wizApp.uniqueArr(wizApp.compiledChickenArr);
+  wizApp.chicken.words.push(...cleanChickenArr);
 });
 
 
 // Cow API call
-wizApp.compiledCowResultsAPI = [];
+wizApp.compiledCowArr = [];
 for (let i = 0; i <= 3; i++) {
-  wizApp.cowResultsAPI.push(wizApp.getWords(wizApp.wordTypeKey[i], `cow`));
+  wizApp.cowObjsFromAPI.push(wizApp.getWords(wizApp.wordTypeKey[i], `cow`));
 }
-$.when(...wizApp.cowResultsAPI).then((...cowWords) => {
+$.when(...wizApp.cowObjsFromAPI).then((...cowWords) => {
   const pulledArray = cowWords.map(word => {
     return word[0];
   });
   for (i = 0; i <= 3; i++) {
     pulledArray[i].forEach(cow => {
-      wizApp.compiledCowResultsAPI.push(cow.word);
+      wizApp.compiledCowArr.push(cow.word);
     });
   }
-  cleanCowResultsAPI = wizApp.uniqueArr(wizApp.compiledCowResultsAPI);
-  wizApp.cow.words.push(...cleanCowResultsAPI);
+  cleanCowArr = wizApp.uniqueArr(wizApp.compiledCowArr);
+  wizApp.cow.words.push(...cleanCowArr);
 });
 
 
 // Fish API call
-wizApp.compiledFishResultsAPI = [];
+wizApp.compiledFishResults = [];
 for (let i = 0; i <= 3; i++) {
-  wizApp.fishResultsAPI.push(wizApp.getWords(wizApp.wordTypeKey[i], `fish`));
+  wizApp.fishObjsFromAPI.push(wizApp.getWords(wizApp.wordTypeKey[i], `fish`));
 }
-$.when(...wizApp.fishResultsAPI)
+$.when(...wizApp.fishObjsFromAPI)
   .then((...fishWords) => {
     const pulledArray = fishWords.map((word) => {
       return word[0];
     })
     for (i = 0; i <= 3; i++) {
       pulledArray[i].forEach((fish) => {
-        wizApp.compiledFishResultsAPI.push(fish.word)
+        wizApp.compiledFishResults.push(fish.word)
       });
     }
-    cleanFishResultsAPI = wizApp.uniqueArr(wizApp.compiledFishResultsAPI);
-    wizApp.fish.words.push(...cleanFishResultsAPI)
+    cleanFishArray = wizApp.uniqueArr(wizApp.compiledFishResults);
+    wizApp.fish.words.push(...cleanFishArray)
   });
 
 
@@ -124,21 +124,20 @@ $.when(...wizApp.fishResultsAPI)
 
 //Form to handle user's guesses
 wizApp.handleSubmit = (animalCategoryay, animalScore) => {
-  console.log(`round starting ${wizApp.currentRoundNum}`);
-  // grabs the user's input
+  // Grab the user's guess from input field
   let userInput = $(`input`).val().toLowerCase();
-  //reset input field to nothing after user submits
+  // Reset input field to nothing after user submits
   $(`input`).val(``);
-  //check user's guess against current list and if correct, add one
+  // Check user's guess against current list and if correct, add one
   if (animalCategoryay.includes(userInput) && !wizApp.guessedWords.includes(userInput)) {
       animalScore.score += 1;
       wizApp.guessedWords.push(userInput);
-    //append correct guesses and colour them green
+    // Append correct guesses and colour them green
     $(`.user-guesses`).append(`<li class="correct">${userInput}</li>`);
-    //update score .;[]
+    // Update score
     $(`.score-counter`).html(`<p>${animalScore.score}</p>`);
   } else {
-    //if inputs do not match, still append but leave red
+    // If inputs do not match, still append but leave red
     $(`.user-guesses`).append(`<li>${userInput}</li>`);
   }
 };
@@ -161,8 +160,8 @@ wizApp.round = () => {
 };
 
 // Countdown screen for each round
-wizApp.displayGameCountdown = animalObj => {
-  $(`.score-counter`).html(`<p>${animalObj.score}</p>`);
+wizApp.displayGameCountdown = animal => {
+  $(`.score-counter`).html(`<p>${animal.score}</p>`);
   $(`.countdown-screen`).removeClass(`hide`);
   //reset input field to nothing before each round
   $(`input`).val(``);
@@ -172,7 +171,7 @@ wizApp.displayGameCountdown = animalObj => {
     timeLeft -= 1;
     if (timeLeft < 0) {
       timeLeft = 3;
-      wizApp.playGame(animalObj);
+      wizApp.playGame(animal);
       window.clearInterval(timer);
       $(`.three-sec-timer`).html(``);
     }
@@ -181,10 +180,10 @@ wizApp.displayGameCountdown = animalObj => {
 };
 
 // Play the game
-wizApp.playGame = animalObj => {
+wizApp.playGame = animal => {
   // Automatically sets user input field to be focused on load
   $('#user-input').focus();
-  $(`.category-word`).html(`${animalObj.type}`);
+  $(`.category-word`).html(`${animal.type}`);
   $(`.countdown-screen`).addClass(`hide`);
   //start timer for the game rounds
   let timeLeft = 20;
@@ -195,7 +194,7 @@ wizApp.playGame = animalObj => {
       $(`.game-play-screen`).addClass(`hide`);
       window.clearInterval(timer);
       $(`.play-timer`).html(``);
-      wizApp.displayRoundResultScreen(animalObj);
+      wizApp.displayRoundResultScreen(animal);
       //reset the guessedWords to an empty array for next round
       wizApp.guessedWords = [];
     }
@@ -203,10 +202,10 @@ wizApp.playGame = animalObj => {
 };
 
 // Display user score for the round
-wizApp.displayRoundResultScreen = (animalObj) => {
+wizApp.displayRoundResultScreen = (animal) => {
   //update values and display round results
-  $(`.round-result-screen p span`).html(`${animalObj.score}`);
-  wizApp.totalScore.push(animalObj.score);
+  $(`.round-result-screen p span`).html(`${animal.score}`);
+  wizApp.totalScore.push(animal.score);
   $(`h2 span`).html(`${wizApp.currentRoundNum}`);
   if (wizApp.currentRoundNum === 3) {
     $(`.next-round-btn`).html(`Did you out-wiz our Wizard?`).on(`click`, function () {
