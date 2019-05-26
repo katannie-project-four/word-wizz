@@ -1,4 +1,5 @@
 footer {
+    text-align: center;
     @include flex (row, nowrap, center, center);
     background-color: $lightblue;
     height: 44px;

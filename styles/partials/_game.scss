@@ -23,6 +23,8 @@
   }
   label {
     color: $darkpurple;
+    display: block;
+    font-family: $font-secondary;
   }
   input{
     border: 0;
@@ -32,29 +34,16 @@
     margin-top: 10px;
     border: 5px solid $lightpurple;
   }
-}
-
-.round-result-screen {
-  p {
-    font-size: 2rem;
-    &:last-of-type {
-      margin-bottom: 20px;
-    }
+  h2 {
+    font-size: 3rem;
+    padding: 0 10px;
+    @include box-shadow(12px, 12px, $lightblue);
+    margin-top: -10rem;
   }
-}
-
-.final-result-screen {
-  p {
-    font-size: 2rem;
+  h3 {
+    font-size: 2.2rem;
     margin-bottom: 20px;
   }
-}
-
-.countdown-screen,
-.round-result-screen,
-.final-result-screen {
-  @include position(absolute,0,0,0,0);
-  @include flex(column, nowrap, center, center);
 }
 
 .timer {

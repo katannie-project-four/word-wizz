@@ -230,13 +230,13 @@ wizApp.displayTotalScoreScreen = () => {
   $(`p span`).html(`${sum}`);
   // Custom messages for user based on their score
   if (wizApp.totalScore <= 5) {
-    $(`.result-msg`).html(`Sorry, you totally got out-wized by our wizard! Study hard and better luck next time!`)
+    $(`.result-msg`).html(`Sorry, you totally got out-wized by our wizard! Study up and better luck next time!`)
   } else if (wizApp.totalScore >= 6 && wizApp.totalScore <= 15) {
     $(`.result-msg`).html(`Not too shabby. But you need to study a bit more to out-wiz our Wizard!`)
   } else if (wizApp.totalScore >= 16 && wizApp.totalScore <= 20) {
-    $(`.result-msg`).html(`Great job! You are on the same level as our wizard but didn't quite out-wiz him!`)
+    $(`.result-msg`).html(`Great job! You're on the same level as our wizard but didn't quite out-wiz him!`)
   } else if (wizApp.totalScore >= 21) {
-    $(`.result-msg`).html(`Well, we have a smarty-pants with us, don't we? You out-wized our wizaard with your extraordinary score!`)
+    $(`.result-msg`).html(`Well, we have a smarty-pants with us, don't we? You out-wized our wizard with your extraordinary score!`)
   }
 };
 

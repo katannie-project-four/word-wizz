@@ -225,10 +225,11 @@ img {
   min-width: 100%;
 }
 
-.btn:focus,
-input:focus {
-  -webkit-box-shadow: 3px -3px 15px #3f1d93, -3px 3px 15px #3f1d93;
-          box-shadow: 3px -3px 15px #3f1d93, -3px 3px 15px #3f1d93;
+.btn:focus, .btn:active,
+input:focus,
+input:active {
+  -webkit-box-shadow: 3px -3px 15px #a4a4ff, -3px 3px 15px #a4a4ff;
+          box-shadow: 3px -3px 15px #a4a4ff, -3px 3px 15px #a4a4ff;
 }
 
 p,
@@ -259,16 +260,8 @@ h2 {
 }
 
 h2 {
-  font-size: 2.6rem;
-  font-size: 1.4rem;
   font-weight: 400;
   background-color: #ff8170;
-}
-
-h3 {
-  font-size: 2rem;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 button {
@@ -312,9 +305,7 @@ button:hover {
       -ms-flex-align: center;
           align-items: center;
   margin: 100px auto;
-  padding-bottom: 40px;
-  padding-right: 30px;
-  padding-left: 30px;
+  padding: 0 30px 40px;
 }
 
 .intro-screen p {
@@ -393,6 +384,10 @@ button:hover {
   font-size: 1rem;
 }
 
+.intro-screen ol li span {
+  font-weight: 600;
+}
+
 .intro-screen button {
   margin-top: -.5rem;
   margin-bottom: -4.2rem;
@@ -413,6 +408,52 @@ button:hover {
 .countdown-screen {
   background-color: #ff8170;
   z-index: 1;
+}
+
+.countdown-screen h2 {
+  font-size: 5rem;
+}
+
+.round-result-screen p,
+.final-result-screen p {
+  font-size: 2.4rem;
+  font-family: "Francois One", sans-serif;
+}
+
+.round-result-screen h2,
+.final-result-screen h2 {
+  color: #ff8170;
+  background-color: #fff;
+  font-size: 3.6rem;
+}
+
+.round-result-screen p:last-of-type {
+  margin-bottom: 20px;
+}
+
+.countdown-screen,
+.round-result-screen,
+.final-result-screen {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .game-play-screen {
@@ -479,6 +520,8 @@ button:hover {
 
 .game-play-screen label {
   color: #3f1d93;
+  display: block;
+  font-family: "Francois One", sans-serif;
 }
 
 .game-play-screen input {
@@ -490,42 +533,17 @@ button:hover {
   border: 5px solid #a4a4ff;
 }
 
-.round-result-screen p {
-  font-size: 2rem;
+.game-play-screen h2 {
+  font-size: 3rem;
+  padding: 0 10px;
+  -webkit-box-shadow: 12px 12px #a0e7fe;
+          box-shadow: 12px 12px #a0e7fe;
+  margin-top: -10rem;
 }
 
-.round-result-screen p:last-of-type {
+.game-play-screen h3 {
+  font-size: 2.2rem;
   margin-bottom: 20px;
-}
-
-.final-result-screen p {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.countdown-screen,
-.round-result-screen,
-.final-result-screen {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .timer {
@@ -587,6 +605,7 @@ li.wrong:before {
 }
 
 footer {
+  text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
