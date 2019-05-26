@@ -31,10 +31,10 @@ img {
 
 .btn, 
 input {
-    &:focus {
-        box-shadow: 3px -3px 15px $darkpurple, -3px 3px 15px $darkpurple;
-    }
-    
+    &:focus,
+    &:active {
+        box-shadow: 3px -3px 15px $lightpurple, -3px 3px 15px $lightpurple;
+    }   
 }
 
 p,
@@ -65,16 +65,8 @@ h2 {
 }
 
 h2 {
-    font-size: 2.6rem;
-    font-size: 1.4rem;
     font-weight: 400;
     background-color: $watermelon;
-}
-
-h3 {
-    font-size: 2rem;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 button {

@@ -1,9 +1,7 @@
 .intro-screen {
   @include flex(column, nowrap, center, center);
   margin: 100px auto;
-  padding-bottom: 40px;
-  padding-right: 30px;
-  padding-left: 30px;
+  padding: 0 30px 40px;
   p {
     margin-left: 20px;
     &:first-of-type {
@@ -47,10 +45,13 @@
   ol {
     margin-top: 0;
     li {
-    list-style: decimal;
-    color: $black;
-    font-size: 1rem;
-  
+      list-style: decimal;
+      color: $black;
+      font-size: 1rem;
+      span {
+        // background-color: $lightblue;
+        font-weight: 600;
+      }
     }
   }
 

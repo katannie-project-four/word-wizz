@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=Francois+One|family=Roboto+Condensed&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Francois+One|family=Oswald:400,600&display=swap" rel="stylesheet">
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous'>
   <link rel="stylesheet" href="./styles/style.css">
   <title>Word Wiz!</title>
@@ -22,7 +22,7 @@
           <ol>
             <li>Each round, our Wizard will give you a <span>key word</span>.</li>
             <li>You have 20 seconds to <span>think of related words.</span></li>
-            <li><span>Input your word in the Wiz Out! section</span> and hit ENTER. (The Wizard only understands correct spelling!)</li>
+            <li><span>Input your word</span> in the Wiz Out! section and hit ENTER. (The Wizard only understands correct spelling!)</li>
             <li>If your word matches our Wizard's word list, you get a point!</li>
           </ol>
           <p><strong>Accumulate as many points as you can to out-wiz our Wizard!</strong></p>
@@ -50,13 +50,13 @@
       <!-- GAME SCREEN -->
       <div class="game-play-screen hide">
         <div class="container">
-          <h2>Round <span>One</span></h2>
+          <h2>Round <span></span></h2>
           <div class="timer play-timer"></div>
         </div>
         <div class="game-field">
           <h3>Your word is: <span class="category-word"></span></h3>
-          <label for="user-input">Type your word here</label>
           <form action="" id="round-1">
+            <label for="user-input">Type your word here</label>
             <input type="text" id="user-input" placeholder="Wiz out!">
           </form>
         </div>
@@ -77,7 +77,7 @@
 
     <!-- END OF GAME SCREEN -->
     <div class="final-result-screen hide">
-      <h2>Game Over!</h2>
+      <h2>game over!</h2>
       <p>Final Score: <span>0</span></p>
       <p class="result-msg"></p>
       <button class="btn play-again-btn">play again</button>

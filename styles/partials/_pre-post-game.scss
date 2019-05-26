@@ -1,0 +1,33 @@
+.countdown-screen  {
+  background-color: $watermelon;
+  z-index: 1;
+  h2 {
+    font-size: 5rem;
+  }
+}
+
+.round-result-screen,
+.final-result-screen {
+  p {
+    font-size: 2.4rem;
+    font-family: $font-secondary;
+   }
+h2 {
+    color: $watermelon;
+    background-color: #fff;
+    font-size: 3.6rem;
+  }
+}
+
+.round-result-screen {
+  p:last-of-type {
+    margin-bottom: 20px;
+  }
+}
+
+.countdown-screen,
+.round-result-screen,
+.final-result-screen {
+  @include position(absolute,0,0,0,0);
+  @include flex(column, nowrap, center, center);
+}
