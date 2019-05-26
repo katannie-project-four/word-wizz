@@ -1,4 +1,4 @@
-.countdown-overlay  {
+.countdown-screen  {
   background-color: $watermelon;
   z-index: 1;
 }
@@ -61,7 +61,7 @@ li {
   }
 }
 
-.countdown-overlay,
+.countdown-screen,
 .round-result-screen,
 .final-result-screen {
   @include position(absolute,0,0,0,0);

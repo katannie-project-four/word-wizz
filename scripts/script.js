@@ -21,7 +21,7 @@ wizApp.category = [
     },
     { //fish
       type: `Fish`,
-      words: [`wet`, `ocean`],
+      words: [`wet`, `ocean`, `gill`, `gills`],
       score: 0
     }
   ]
@@ -163,7 +163,7 @@ wizApp.round = () => {
 // Countdown screen for each round
 wizApp.displayGameCountdown = animalObj => {
   $(`.score-counter`).html(`<p>${animalObj.score}</p>`);
-  $(`.countdown-overlay`).removeClass(`hide`);
+  $(`.countdown-screen`).removeClass(`hide`);
   //reset input field to nothing before each round
   $(`input`).val(``);
   let timeLeft = 3;
@@ -182,8 +182,10 @@ wizApp.displayGameCountdown = animalObj => {
 
 // Play the game
 wizApp.playGame = animalObj => {
+  // Automatically sets user input field to be focused on load
+  $('#user-input').focus();
   $(`.category-word`).html(`${animalObj.type}`);
-  $(`.countdown-overlay`).addClass(`hide`);
+  $(`.countdown-screen`).addClass(`hide`);
   //start timer for the game rounds
   let timeLeft = 20;
   let timer = setInterval(function() {
@@ -207,7 +209,7 @@ wizApp.displayRoundResultScreen = (animalObj) => {
   wizApp.totalScore.push(animalObj.score);
   $(`h2 span`).html(`${wizApp.currentRoundNum}`);
   if (wizApp.currentRoundNum === 3) {
-    $(`.next-round-btn`).html(`Go to your results!`).on(`click`, function () {
+    $(`.next-round-btn`).html(`Did you out-wiz our Wizard?`).on(`click`, function () {
       wizApp.displayTotalScoreScreen();
     });
   } else {
@@ -241,7 +243,6 @@ wizApp.eventListeners = () => {
   } // If on final round (3), go to the final results score screen
   else if (wizApp.currentRoundNum === 3) {
     $(".next-round-btn").on("click", function() {
-      console.log("end gamebtn being clicked");
       $(".game-center").addClass("hide");
       $(".game-play-screen").addClass("hide");
       $(".round-result-screen").addClass("hide");
@@ -257,7 +258,7 @@ wizApp.eventListeners = () => {
     const round = event.target.id;
     if (round === `round-one`) {
       wizApp.handleSubmit(wizApp.finalChickenWords, wizApp.chicken);
-    } else if (round === `round-2`) {
+    } else if (round === `round-two`) {
       wizApp.handleSubmit(wizApp.finalCowWords, wizApp.cow);
     } else {
       wizApp.handleSubmit(wizApp.finalFishWords, wizApp.fish);
