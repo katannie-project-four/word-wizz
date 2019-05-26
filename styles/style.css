@@ -287,7 +287,7 @@ button:hover {
 }
 
 .intro-screen,
-.game-play-screen,
+.game-field,
 .round-result-screen,
 .final-result-screen {
   background-color: #fff;
@@ -608,6 +608,9 @@ button:hover {
 
 .round-result-screen p:last-of-type {
   margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 @media (max-width: 340px) {
@@ -645,7 +648,7 @@ button:hover {
 .game-play-screen {
   padding-top: 30px;
   padding-bottom: 30px;
-  position: relative;
+  margin-top: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -674,17 +677,17 @@ button:hover {
 }
 
 .game-play-screen .game-field {
+  position: relative;
   width: 100%;
-}
-
-.game-play-screen .container {
+  margin-top: 20px;
+  min-height: 350px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   -webkit-box-pack: center;
@@ -725,8 +728,8 @@ button:hover {
 
 .game-play-screen .play-timer {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: -30px;
+  right: -20px;
 }
 
 @media (max-width: 850px) {
@@ -745,7 +748,7 @@ button:hover {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .game-play-screen .play-timer {
     width: 80px;
     height: 80px;
@@ -767,6 +770,8 @@ button:hover {
 
 .game-play-screen p {
   margin-top: 15px;
+  text-transform: uppercase;
+  font-family: "Francois One", sans-serif;
 }
 
 .game-play-screen p span {
@@ -790,11 +795,11 @@ button:hover {
 }
 
 .game-play-screen h2 {
+  margin-top: -100px;
   font-size: 3rem;
   padding: 0 10px;
   -webkit-box-shadow: 12px 12px #a0e7fe;
           box-shadow: 12px 12px #a0e7fe;
-  margin-top: -10rem;
 }
 
 @media (max-width: 400px) {

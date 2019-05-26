@@ -54,19 +54,17 @@
 
       <!-- GAME SCREEN -->
       <div class="game-play-screen hide">
-        <div class="container">
-          <h2>Round <span></span></h2>
-          <div class="timer play-timer"></div>
-        </div>
+        <h2>Round <span></span></h2>
         <div class="game-field">
+          <div class="timer play-timer"></div>
           <h3>Your word is: <span class="category-word"></span></h3>
           <form action="" id="round-1">
             <label for="user-input">Type your word here</label>
             <input type="text" id="user-input" placeholder="Wiz out!">
           </form>
-        </div>
-        <p>Score: <span class="score-counter"></span></p>
-        <div class="user-guesses desktop-guesses">
+          <p>Score: <span class="score-counter"></span></p>
+          <div class="user-guesses desktop-guesses">
+          </div>
         </div>
       </div>
 
@@ -76,7 +74,7 @@
         <h2>Round <span>One</span> Complete!</h2>
         <div class="user-guesses mobile-guesses"></div>
         <p>Score: <span>0</span></p>
-        <button class="btn next-round-btn">on to round <span>two</span>!</button>
+        <button class="btn next-round-btn" autofocus>on to round <span>two</span>!</button>
       </div>
 
     </main>
@@ -86,12 +84,13 @@
       <h2>game over!</h2>
       <p>Final Score: <span>0</span></p>
       <p class="result-msg"></p>
-      <button class="btn play-again-btn">play again</button>
+      <button class="btn play-again-btn" autofocus>play again</button>
     </div>
   </div>
   <footer>
-    <p>Made by <a href="www.anniebombanie.com" target="_blank">Annie Liew</a> & <a href="www.katbosnic.com"
-        target="_blank">Kat Bosnic</a> | Powered by the <a href="https://www.datamuse.com/api/" target="_blank">Datamuse
+    <p>Made by <a aria-label="Annie Liew website link" href="www.anniebombanie.com" target="_blank">Annie Liew</a> & <a
+        aria-label="Kat Bosnic website link" href="www.katbosnic.com" target="_blank">Kat Bosnic</a> | Powered by the <a
+        href="https://www.datamuse.com/api/" target="_blank">Datamuse
         API</a>
     </p>
   </footer>
