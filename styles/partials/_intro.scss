@@ -1,0 +1,40 @@
+.intro-screen {
+  @include flex(column, nowrap, center, center);
+  margin: 100px auto;
+  padding-bottom: 40px;
+  padding-right: 30px;
+  padding-left: 30px;
+  p {
+    margin-left: 20px;
+    &:first-of-type {
+      margin-bottom: 10px;
+    }
+    
+  }
+  img {
+    width: 40%;
+  }
+  .how-to-container {
+    @include flex(row, nowrap, flex-start, center);
+    .how-to {
+      width: 60%;
+    }
+  }
+  h2 {
+    margin-top: 0;
+  }
+
+  li {
+  list-style: decimal;
+  color: $black;
+  font-size: 1rem;
+  }
+}
+
+.intro-screen,
+.game-play-screen,
+.round-result-screen,
+.final-result-screen {
+  background-color: #FAFAFA;
+  border: 12px solid $lightgreen;
+}

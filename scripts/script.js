@@ -137,7 +137,7 @@ wizApp.handleSubmit = (animalCategory, animalScore) => {
     $(`.score-counter`).html(`<p>${animalScore.score}</p>`);
   } else {
     // If inputs do not match, still append but leave red
-    $(`.user-guesses`).append(`<li>${userInput}</li>`);
+    $(`.user-guesses`).append(`<li class="wrong">${userInput}</li>`);
   }
 };
 
