@@ -21,6 +21,9 @@ body {
     max-width: 1200px;
     width: 80%;
     margin: 0 auto;
+    @include media(500px) {
+        width: 93%;
+    }
 }
 
 img {
@@ -80,6 +83,7 @@ button {
     &:hover {
         border: 10px solid $lightpurple;
     }
+    max-width: 90%;
 }   
 
 .intro-screen,

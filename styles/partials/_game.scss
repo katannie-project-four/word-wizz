@@ -3,6 +3,9 @@
   padding-bottom: 30px;
   position: relative;
   @include flex(column, nowrap, center, center);
+  @include media(325px) {
+    justify-content: flex-start;
+  }
   .game-field {
     width: 100%;
   }
@@ -12,10 +15,38 @@
   min-height: 50vh;
   .user-guesses {
     @include position(absolute, 20px, null, null, 20px);
+    @include flex (column, wrap, flex-start, flex-start);
+    max-height: 320px;
+  }
+  .desktop-guesses {
+    @include media(1030px){
+      display: none;
+    }
   }
   text-align: center;
   .play-timer {
     @include position(absolute, 20px, 20px, null, null);
+    @include media(850px) {
+      @include position(absolute, -20px, -20px, null, null);
+    }
+    @include media(700px) {
+      @include position(absolute, -30px, -30px, null, null);
+    }
+    @include media(500px) {
+      width: 80px;
+      height: 80px;
+      border-radius: 40px;
+      font-size: 2rem;
+      @include position(absolute, -20px, -20px, null, null);
+    }
+    @include media(400px) {
+      width: 70px;
+      height: 70px;
+      border-radius: 35px;
+    }
+  }
+  p {
+    margin-top: 15px;
   }
   p span {
     font-size: 2rem;
@@ -36,12 +67,18 @@
   }
   h2 {
     font-size: 3rem;
+    @include media(400px) {
+      font-size: 2.5rem;
+    }
     padding: 0 10px;
     @include box-shadow(12px, 12px, $lightblue);
     margin-top: -10rem;
   }
   h3 {
     font-size: 2.2rem;
+    @include media(400px) {
+      font-size: 2rem;
+    }
     margin-bottom: 20px;
   }
 }
@@ -58,9 +95,13 @@
 
 li {
   font-size: 1.3rem;
+  @include media(500px) {
+    font-size: 1rem;
+  }
   color: $watermelon;
   list-style: none;
   text-align-last: left;
+  margin-right: 10px;
   &:before {
     font-family: 'Font Awesome 5 Free';
     display: inline-block;
