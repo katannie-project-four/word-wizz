@@ -39,8 +39,6 @@
   }
 }
 
-
-
 .round-result-screen {
   p {
     font-size: 2rem;
@@ -78,6 +76,7 @@ li {
   font-size: 1.3rem;
   color: $watermelon;
   list-style: none;
+  text-align-last: left;
   &:before {
     font-family: 'Font Awesome 5 Free';
     display: inline-block;
@@ -97,10 +96,10 @@ li {
   }
 }
 
-
 .hide {
-    display: none;
+  display: none;
 }
+
 .hidden {
   display: none;
 }

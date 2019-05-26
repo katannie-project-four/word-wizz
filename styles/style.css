@@ -200,10 +200,6 @@ input:focus {
   margin: 0 auto;
 }
 
-.hide {
-  display: none;
-}
-
 body {
   position: relative;
   width: 100vw;
@@ -511,6 +507,7 @@ li {
   font-size: 1.3rem;
   color: #ff8170;
   list-style: none;
+  text-align-last: left;
 }
 
 li:before {
@@ -529,7 +526,7 @@ li.correct:before {
 }
 
 li.wrong:before {
-  content: "\f00c";
+  content: "\f00d";
 }
 
 .hide {
