@@ -11,7 +11,7 @@ wizApp.category = [
   [
     { //chicken
       type: `Chicken`,
-      words: [`kfc`, `wing`],
+      words: [`kfc`, `wing`, `feather`, `beak`,  `peak`, `fly`],
       score: 0
     },
     { //cow
@@ -121,15 +121,14 @@ $.when(...wizApp.fishObjsFromAPI)
 
 
 // =============== GAME FUNCTIONS  =============== //
-
 //Form to handle user's guesses
-wizApp.handleSubmit = (animalCategoryay, animalScore) => {
+wizApp.handleSubmit = (animalCategory, animalScore) => {
   // Grab the user's guess from input field
   let userInput = $(`input`).val().toLowerCase();
   // Reset input field to nothing after user submits
   $(`input`).val(``);
   // Check user's guess against current list and if correct, add one
-  if (animalCategoryay.includes(userInput) && !wizApp.guessedWords.includes(userInput)) {
+  if (animalCategory.includes(userInput) && !wizApp.guessedWords.includes(userInput)) {
       animalScore.score += 1;
       wizApp.guessedWords.push(userInput);
     // Append correct guesses and colour them green
@@ -142,7 +141,7 @@ wizApp.handleSubmit = (animalCategoryay, animalScore) => {
   }
 };
 
-// Set-up for cycling through the rounds
+// Set-up for cycling through rounds
 wizApp.round = () => {
   $(`.intro-screen`).addClass(`hide`);
   $(`.game-play-screen`).removeClass(`hide`);
@@ -159,12 +158,14 @@ wizApp.round = () => {
   };
 };
 
+
 // Countdown screen for each round
 wizApp.displayGameCountdown = animal => {
   $(`.score-counter`).html(`<p>${animal.score}</p>`);
   $(`.countdown-screen`).removeClass(`hide`);
-  //reset input field to nothing before each round
+  // Reset input field to nothing before each round
   $(`input`).val(``);
+  // Set the count-down timer to 3
   let timeLeft = 3;
   let timer = setInterval(function() {
     $(`.three-sec-timer`).html(timeLeft);
@@ -175,17 +176,19 @@ wizApp.displayGameCountdown = animal => {
       window.clearInterval(timer);
       $(`.three-sec-timer`).html(``);
     }
-    //run the timer at 1 sec intervals
+    // Run the timer at 1sec intervals
   }, 1000);
 };
 
 // Play the game
 wizApp.playGame = animal => {
   // Automatically sets user input field to be focused on load
-  $('#user-input').focus();
+  $(`#user-input`).focus();
+  // Append the animal type to the round title
   $(`.category-word`).html(`${animal.type}`);
+  // Hide the countdown screen
   $(`.countdown-screen`).addClass(`hide`);
-  //start timer for the game rounds
+  // Start timer for the game rounds
   let timeLeft = 20;
   let timer = setInterval(function() {
     $(`.play-timer`).html(timeLeft);
@@ -203,12 +206,13 @@ wizApp.playGame = animal => {
 
 // Display user score for the round
 wizApp.displayRoundResultScreen = (animal) => {
-  //update values and display round results
+  // Update values and display round results
   $(`.round-result-screen p span`).html(`${animal.score}`);
   wizApp.totalScore.push(animal.score);
   $(`h2 span`).html(`${wizApp.currentRoundNum}`);
   if (wizApp.currentRoundNum === 3) {
-    $(`.next-round-btn`).html(`Did you out-wiz our Wizard?`).on(`click`, function () {
+    // Auto-focus on next-round button and change the text
+    $(`.next-round-btn`).focus().html(`Did you out-wiz our Wizard?`).on(`click`, function () {
       wizApp.displayTotalScoreScreen();
     });
   } else {
@@ -228,24 +232,26 @@ wizApp.displayTotalScoreScreen = () => {
 
 // Event listeners for game functionality
 wizApp.eventListeners = () => {
-  // Start the first round on click of start button
-  $(`.start-btn`).on(`click`, function () {
+  // Auto focus on start button and start the first round on click
+  $(`.start-btn`).focus().on(`click`, function () {
     wizApp.round();
   });
   // If user is on rounds 1 or 2, go to next round
   if (wizApp.currentRoundNum < 3) {
-    $(`.next-round-btn`).on(`click`, function () {
+    // Auto-focus on next-round button
+    $(`.next-round-btn`).focus().on(`click`, function () {
       $(`.round-result-screen`).addClass(`hide`);
       $(`li`).addClass(`hidden`);
       wizApp.round();
     });
   } // If on final round (3), go to the final results score screen
   else if (wizApp.currentRoundNum === 3) {
-    $(".next-round-btn").on("click", function() {
-      $(".game-center").addClass("hide");
-      $(".game-play-screen").addClass("hide");
-      $(".round-result-screen").addClass("hide");
-      $(".final-result-screen").removeClass("hide");
+    // Auto-focus on next-round button
+    $(`.next-round-btn`).focus().on(`click`, function() {
+      $(`.game-center`).addClass(`hide`);
+      $(`.game-play-screen`).addClass(`hide`);
+      $(`.round-result-screen`).addClass(`hide`);
+      $(`.final-result-screen`).removeClass(`hide`);
       wizApp.displayTotalScoreScreen();
     });
   };
@@ -264,8 +270,8 @@ wizApp.eventListeners = () => {
     } 
   });
 
-  // Reset the game when play again button is clicked
-  $(`.play-again-btn`).on(`click`, function() {
+  // Auto-focus and reset the game when play again button is clicked
+  $(`.play-again-btn`).focus().on(`click`, function() {
     console.log(`clicked reset btn`);
     window.location.reload();
   });
