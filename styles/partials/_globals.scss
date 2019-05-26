@@ -5,7 +5,7 @@ html {
 .btn, 
 input {
     &:focus {
-        box-shadow: 3px -3px 15px $darkgreen, -3px 3px 15px $darkgreen;
+        box-shadow: 3px -3px 15px $darkpurple, -3px 3px 15px $darkpurple;
     }
     
 }
@@ -69,16 +69,16 @@ h3 {
 
 a {
     text-decoration: none;
-    color: $darkgreen;
-    transition: all 0.3s; 
+    color: $black;
+    background-color: $lightpurple; 
+    transition: background-color 0.3s; 
     &:hover {
-        color: $watermelon;
+        background-color: $watermelon;
     }
 }
 
 button {
     border: 5px solid $watermelon;
-    border-radius: 50px;
     padding: 10px 30px;
     background: $watermelon;
     color: #fafafa;
@@ -86,6 +86,6 @@ button {
     font-size: 1.5rem;
     transition: all 0.3s;
     &:hover {
-        border: 5px solid $darkgreen;
+        border: 5px solid $darkpurple;
     }
 }   

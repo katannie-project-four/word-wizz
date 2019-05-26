@@ -172,8 +172,8 @@ html {
 
 .btn:focus,
 input:focus {
-  -webkit-box-shadow: 3px -3px 15px #007785, -3px 3px 15px #007785;
-          box-shadow: 3px -3px 15px #007785, -3px 3px 15px #007785;
+  -webkit-box-shadow: 3px -3px 15px #3f1d93, -3px 3px 15px #3f1d93;
+          box-shadow: 3px -3px 15px #3f1d93, -3px 3px 15px #3f1d93;
 }
 
 .flex-center {
@@ -204,7 +204,7 @@ body {
   position: relative;
   width: 100vw;
   min-height: 100vh;
-  font-family: "Lato", sans-serif;
+  font-family: "Oswald", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -234,7 +234,7 @@ h1,
 h2,
 h3,
 button {
-  font-family: "Love Ya Like A Sister", cursive;
+  font-family: "Francois One", sans-serif;
   letter-spacing: 1.5px;
 }
 
@@ -262,18 +262,18 @@ h3 {
 
 a {
   text-decoration: none;
-  color: #007785;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  color: #262626;
+  background-color: #a4a4ff;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
 }
 
 a:hover {
-  color: #ff8170;
+  background-color: #ff8170;
 }
 
 button {
   border: 5px solid #ff8170;
-  border-radius: 50px;
   padding: 10px 30px;
   background: #ff8170;
   color: #fafafa;
@@ -284,7 +284,7 @@ button {
 }
 
 button:hover {
-  border: 5px solid #007785;
+  border: 5px solid #3f1d93;
 }
 
 .intro-screen {
@@ -358,7 +358,7 @@ button:hover {
 .round-result-screen,
 .final-result-screen {
   background-color: #FAFAFA;
-  border: 12px solid #d6e6d5;
+  border: 12px solid #a0e7fe;
 }
 
 .countdown-screen {
@@ -429,16 +429,16 @@ button:hover {
 }
 
 .game-play-screen label {
-  color: #007785;
+  color: #3f1d93;
 }
 
 .game-play-screen input {
   border: 0;
   color: #262626;
-  background: #d6e6d5;
+  background: #a0e7fe;
   padding: 10px;
   margin-top: 10px;
-  border: 2px dotted #007785;
+  border: 2px dotted #3f1d93;
 }
 
 .round-result-screen p {
@@ -553,8 +553,8 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #d6e6d5;
-  height: 40px;
+  background-color: #a0e7fe;
+  height: 42px;
   width: 100%;
   font-size: .7rem;
   position: absolute;
@@ -563,5 +563,7 @@ footer {
   left: 0;
 }
 
-/* Wizard image by GraphicMama-team: https://pixabay.com/users/graphicmama-team-2641041/ */
+/* IMAGE CREDITS
+Wizard image by GraphicMama-team: https://pixabay.com/users/graphicmama-team-2641041/ 
+Background pattern edited from www.toptal.com/designers/subtlepatterns/ */
 /*# sourceMappingURL=style.css.map */

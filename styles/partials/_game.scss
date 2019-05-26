@@ -27,15 +27,15 @@
     color: $correct;
   }
   label {
-    color: $darkgreen;
+    color: $darkpurple;
   }
   input{
     border: 0;
     color: $black;
-    background: $lightgreen;
+    background: $lightblue;
     padding: 10px;
     margin-top: 10px;
-    border: 2px dotted $darkgreen;
+    border: 2px dotted $darkpurple;
   }
 }
 
