@@ -1,8 +1,3 @@
-.countdown-overlay  {
-  background-color: $watermelon;
-  z-index: 1;
-}
-
 .game-play-screen {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -27,22 +22,16 @@
     color: $correct;
   }
   label {
-    color: $darkgreen;
+    color: $darkpurple;
   }
   input{
     border: 0;
     color: $black;
-    background: $lightgreen;
+    background: $lightblue;
     padding: 10px;
     margin-top: 10px;
-    border: 2px dotted $darkgreen;
+    border: 5px solid $lightpurple;
   }
-}
-
-li {
-  font-size: 1.3rem;
-  list-style: none;
-  color: $watermelon;
 }
 
 .round-result-screen {
@@ -61,14 +50,12 @@ li {
   }
 }
 
-.countdown-overlay,
+.countdown-screen,
 .round-result-screen,
 .final-result-screen {
   @include position(absolute,0,0,0,0);
   @include flex(column, nowrap, center, center);
 }
-
-
 
 .timer {
   @include flex(row, nowrap, center, center);
@@ -80,50 +67,34 @@ li {
   color: #FAFAFA;
 }
 
-
-.correct {
-  color: $correct;
-}
-
-.intro-screen {
-  @include flex(column, nowrap, center, center);
-  margin: 100px auto;
-  padding-bottom: 40px;
-  padding-right: 30px;
-  padding-left: 30px;
-  p {
-    margin-left: 20px;
-    &:first-of-type {
-      margin-bottom: 10px;
-    }
-    
+li {
+  font-size: 1.3rem;
+  color: $watermelon;
+  list-style: none;
+  text-align-last: left;
+  &:before {
+    font-family: 'Font Awesome 5 Free';
+    display: inline-block;
+    margin-right: .4rem;
+    font-weight: 900;
   }
-  img {
-    width: 40%;
-  }
-  .how-to-container {
-    @include flex(row, nowrap, flex-start, center);
-    .how-to {
-      width: 60%;
+  &.correct {
+    color: $correct;
+    &:before {
+      content: "\f00c";
     }
   }
-  h2 {
-    margin-top: 0;
+  &.wrong {
+    &:before {
+      content: "\f00d";
+    }
   }
 }
-
-.intro-screen,
-.game-play-screen,
-.round-result-screen,
-.final-result-screen {
-  background-color: #FAFAFA;
-  border: 12px solid $lightgreen;
-}
-
 
 .hide {
-    display: none;
+  display: none;
 }
+
 .hidden {
   display: none;
 }

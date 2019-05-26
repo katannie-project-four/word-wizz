@@ -1,7 +1,21 @@
 footer {
     @include flex (row, nowrap, center, center);
-    background-color: $lightgreen;
-    height: 40px;
+    background-color: $lightblue;
+    height: 44px;
     width: 100%;
+    font-size: .8rem;
     @include position(absolute, null, 0, 0, 0);
+
+    a {
+        text-decoration: none;
+        padding: 0 5px;
+        color: $black;
+        background-color: $lightpurple; 
+        transition: background-color 0.3s; 
+        &:hover {
+            background-color: $watermelon;
+        }
+    }
 }
+
+

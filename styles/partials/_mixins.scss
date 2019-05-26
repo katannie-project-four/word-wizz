@@ -1,12 +1,12 @@
 
 // VARIABLES
-$font-primary: 'Lato', sans-serif;
-$font-secondary: 'Love Ya Like A Sister', cursive;
+$font-primary: 'Oswald' , sans-serif;
+$font-secondary: 'Francois One', sans-serif;
 
-$darkgreen: #007785;
-$lightgreen: #d6e6d5;
+$darkpurple: #3f1d93;
+$lightblue: #a0e7fe;
 $watermelon: #ff8170;
-$grey: #535353;
+$lightpurple: #a4a4ff;
 $black: #262626;
 $correct: #2E8B57;
 
@@ -27,9 +27,17 @@ $correct: #2E8B57;
   left: $left;
 }
 
-//Adopted from https://thoughtbot.com/blog/sasss-content-directive
+@mixin box-shadow ($x, $y, $color) {
+  box-shadow: $x $y $color;
+}
+
+@mixin text-shadow ($x, $y, $color) {
+  text-shadow: $x $y $color;
+}
+
+//Thanks to https://thoughtbot.com/blog/sasss-content-directive
 @mixin media($width) {
-  @media (min-width: $width) {
+  @media (max-width: $width) {
     @content;
   }  
 }

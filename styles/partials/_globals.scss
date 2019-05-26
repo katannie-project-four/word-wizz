@@ -2,12 +2,15 @@ html {
     font-size: 125%;
 }
 
-.btn, 
-input {
-    &:focus {
-        box-shadow: 3px -3px 15px $darkgreen, -3px 3px 15px $darkgreen;
-    }
-    
+body {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    font-family: $font-primary;
+    color: $black;
+    @include flex(column, nowrap, center, center);
+    overflow-x: hidden;
+    background-image: url(./../assets/bg-pattern.png);
 }
 
 .flex-center {
@@ -19,18 +22,24 @@ input {
     width: 80%;
     margin: 0 auto;
 }
-.hide {
-    display: none;
+
+img {
+    display: block;
+    width: 100%;
+    min-width: 100%;
 }
 
+.btn, 
+input {
+    &:focus {
+        box-shadow: 3px -3px 15px $darkpurple, -3px 3px 15px $darkpurple;
+    }
+    
+}
 
-body {
-    position: relative;
-    width: 100vw;
-    min-height: 100vh;
-    font-family: $font-primary;
-    @include flex(column, nowrap, center, center);
-    background-image: url(./../assets/bg-pattern.png);
+p,
+ol {
+    letter-spacing: .01rem
 }
 
 p,
@@ -38,6 +47,7 @@ h1,
 h2,
 h3 {
     margin: 0;
+    display: inline-block;
 }
 
 h1,
@@ -45,23 +55,20 @@ h2,
 h3,
 button {
     font-family: $font-secondary;
-    letter-spacing: 1.5px;
-}
-
-h1 {
-    font-size: 5rem;
-    margin-top: 20px;
 }
 
 h1,
-button {
+button,
+h2 {
     text-transform: uppercase;
+    color: #fff;
 }
 
 h2 {
-    font-size: 2.5rem;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    font-size: 2.6rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+    background-color: $watermelon;
 }
 
 h3 {
@@ -70,18 +77,8 @@ h3 {
     margin-bottom: 10px;
 }
 
-a {
-    text-decoration: none;
-    color: $darkgreen;
-    transition: all 0.3s; 
-    &:hover {
-        color: $watermelon;
-    }
-}
-
 button {
-    border: 5px solid $watermelon;
-    border-radius: 50px;
+    border: 10px solid $lightblue;
     padding: 10px 30px;
     background: $watermelon;
     color: #fafafa;
@@ -89,6 +86,14 @@ button {
     font-size: 1.5rem;
     transition: all 0.3s;
     &:hover {
-        border: 5px solid $darkgreen;
+        border: 10px solid $lightpurple;
     }
 }   
+
+.intro-screen,
+.game-play-screen,
+.round-result-screen,
+.final-result-screen {
+  background-color: #fff;
+  @include box-shadow (12px, 12px, $lightblue);
+}
