@@ -20,14 +20,19 @@ input {
     margin: 0 auto;
 }
 
-
 body {
     position: relative;
     width: 100vw;
     min-height: 100vh;
     font-family: $font-primary;
+    color: $black;
     @include flex(column, nowrap, center, center);
     background-image: url(./../assets/bg-pattern.png);
+}
+
+p,
+ol {
+    letter-spacing: .01rem
 }
 
 p,
@@ -35,6 +40,7 @@ h1,
 h2,
 h3 {
     margin: 0;
+    display: inline-block;
 }
 
 h1,
@@ -54,7 +60,7 @@ h2 {
 h1 {
     text-align: center;
     font-size: 5.5rem;
-    margin-top: -5rem;
+    margin-top: -4.2rem;
     margin-bottom: 2rem;
     background-color: $lightpurple;
     padding: 0 5%;
@@ -63,9 +69,7 @@ h1 {
 }
 
 h2 {
-    font-size: 2.5rem;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    font-size: 2.6rem;
     font-size: 1.4rem;
     font-weight: 400;
     background-color: $watermelon;
@@ -77,18 +81,8 @@ h3 {
     margin-bottom: 10px;
 }
 
-a {
-    text-decoration: none;
-    color: $black;
-    background-color: $lightpurple; 
-    transition: background-color 0.3s; 
-    &:hover {
-        background-color: $watermelon;
-    }
-}
-
 button {
-    border: 5px solid $watermelon;
+    border: 10px solid $lightblue;
     padding: 10px 30px;
     background: $watermelon;
     color: #fafafa;
@@ -96,6 +90,14 @@ button {
     font-size: 1.5rem;
     transition: all 0.3s;
     &:hover {
-        border: 5px solid $darkpurple;
+        border: 10px solid $darkpurple;
     }
 }   
+
+.intro-screen,
+.game-play-screen,
+.round-result-screen,
+.final-result-screen {
+  background-color: #fff;
+  @include box-shadow (12px, 12px, $lightblue);
+}

@@ -21,20 +21,24 @@
     }
   }
   h2 {
+    font-size: 1.5rem;
+    padding: 2px 25px 2px 35px;
+    margin: 20px 0 12px -40px;
+    display: inline-block;
+  }
+
+  ol {
     margin-top: 0;
+    li {
+    list-style: decimal;
+    color: $black;
+    font-size: 1rem;
+  
+    }
   }
 
-  li {
-  list-style: decimal;
-  color: $black;
-  font-size: 1rem;
+  button {
+    margin-bottom: -4.2rem;
+    margin-top: 2rem;
   }
-}
-
-.intro-screen,
-.game-play-screen,
-.round-result-screen,
-.final-result-screen {
-  background-color: #fff;
-  @include box-shadow (12px, 12px, $lightblue);
 }

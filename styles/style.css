@@ -205,6 +205,7 @@ body {
   width: 100vw;
   min-height: 100vh;
   font-family: "Oswald", sans-serif;
+  color: #262626;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -224,10 +225,16 @@ body {
 }
 
 p,
+ol {
+  letter-spacing: .01rem;
+}
+
+p,
 h1,
 h2,
 h3 {
   margin: 0;
+  display: inline-block;
 }
 
 h1,
@@ -247,7 +254,7 @@ h2 {
 h1 {
   text-align: center;
   font-size: 5.5rem;
-  margin-top: -5rem;
+  margin-top: -4.2rem;
   margin-bottom: 2rem;
   background-color: #a4a4ff;
   padding: 0 5%;
@@ -257,9 +264,7 @@ h1 {
 }
 
 h2 {
-  font-size: 2.5rem;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  font-size: 2.6rem;
   font-size: 1.4rem;
   font-weight: 400;
   background-color: #ff8170;
@@ -271,20 +276,8 @@ h3 {
   margin-bottom: 10px;
 }
 
-a {
-  text-decoration: none;
-  color: #262626;
-  background-color: #a4a4ff;
-  -webkit-transition: background-color 0.3s;
-  transition: background-color 0.3s;
-}
-
-a:hover {
-  background-color: #ff8170;
-}
-
 button {
-  border: 5px solid #ff8170;
+  border: 10px solid #a0e7fe;
   padding: 10px 30px;
   background: #ff8170;
   color: #fafafa;
@@ -295,7 +288,16 @@ button {
 }
 
 button:hover {
-  border: 5px solid #3f1d93;
+  border: 10px solid #3f1d93;
+}
+
+.intro-screen,
+.game-play-screen,
+.round-result-screen,
+.final-result-screen {
+  background-color: #fff;
+  -webkit-box-shadow: 12px 12px #a0e7fe;
+          box-shadow: 12px 12px #a0e7fe;
 }
 
 .intro-screen {
@@ -355,22 +357,29 @@ button:hover {
 }
 
 .intro-screen h2 {
+  padding: 2px 25px 2px 35px;
+  margin: 20px 0 12px -40px;
+  display: inline-block;
+}
+
+.intro-screen ol {
   margin-top: 0;
 }
 
-.intro-screen li {
+.intro-screen ol li {
   list-style: decimal;
   color: #262626;
   font-size: 1rem;
 }
 
-.intro-screen,
-.game-play-screen,
-.round-result-screen,
-.final-result-screen {
-  background-color: #fff;
-  -webkit-box-shadow: 12px 12px #a0e7fe;
-          box-shadow: 12px 12px #a0e7fe;
+.intro-screen button {
+  margin-bottom: -4.2rem;
+  margin-top: 2rem;
+}
+
+.countdown-screen {
+  background-color: #ff8170;
+  z-index: 1;
 }
 
 .countdown-screen {
@@ -566,16 +575,29 @@ footer {
       -ms-flex-align: center;
           align-items: center;
   background-color: #a0e7fe;
-  height: 42px;
+  height: 44px;
   width: 100%;
-  font-size: .7rem;
+  font-size: .8rem;
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
 }
 
-/* IMAGE CREDITS
+footer a {
+  text-decoration: none;
+  padding: 0 5px;
+  color: #262626;
+  background-color: #a4a4ff;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+footer a:hover {
+  background-color: #ff8170;
+}
+
+/* === IMAGE CREDITS ===
 Wizard image by GraphicMama-team: https://pixabay.com/users/graphicmama-team-2641041/ 
 Background pattern edited from www.toptal.com/designers/subtlepatterns/ */
 /*# sourceMappingURL=style.css.map */
