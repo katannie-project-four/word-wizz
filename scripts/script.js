@@ -271,9 +271,9 @@ wizApp.eventListeners = () => {
     // Prevent the default behaviour
     event.preventDefault();
     const round = event.target.id;
-    if (round === `round-one`) {
+    if (round === `round-1`) {
       wizApp.handleSubmit(wizApp.finalChickenWords, wizApp.chicken);
-    } else if (round === `round-two`) {
+    } else if (round === `round-2`) {
       wizApp.handleSubmit(wizApp.finalCowWords, wizApp.cow);
     } else {
       wizApp.handleSubmit(wizApp.finalFishWords, wizApp.fish);
