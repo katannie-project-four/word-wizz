@@ -35,6 +35,6 @@
 .game-play-screen,
 .round-result-screen,
 .final-result-screen {
-  background-color: #FAFAFA;
-  border: 12px solid $lightblue;
+  background-color: #fff;
+  @include box-shadow (12px, 12px, $lightblue);
 }

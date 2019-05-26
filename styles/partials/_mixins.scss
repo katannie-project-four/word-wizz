@@ -27,6 +27,14 @@ $correct: #2E8B57;
   left: $left;
 }
 
+@mixin box-shadow ($x, $y, $color) {
+  box-shadow: $x $y $color;
+}
+
+@mixin text-shadow ($x, $y, $color) {
+  text-shadow: $x $y $color;
+}
+
 //Adopted from https://thoughtbot.com/blog/sasss-content-directive
 @mixin media($width) {
   @media (min-width: $width) {

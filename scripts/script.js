@@ -123,6 +123,7 @@ $.when(...wizApp.fishObjsFromAPI)
 // =============== GAME FUNCTIONS  =============== //
 //Form to handle user's guesses
 wizApp.handleSubmit = (animalCategory, animalScore) => {
+  console.log(animalCategory, animalScore);
   // Grab the user's guess from input field
   let userInput = $(`input`).val().toLowerCase();
   // Reset input field to nothing after user submits

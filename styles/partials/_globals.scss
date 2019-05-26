@@ -42,23 +42,33 @@ h2,
 h3,
 button {
     font-family: $font-secondary;
-    letter-spacing: 1.5px;
-}
-
-h1 {
-    font-size: 5rem;
-    margin-top: 20px;
 }
 
 h1,
-button {
+button,
+h2 {
     text-transform: uppercase;
+    color: #fff;
+}
+
+h1 {
+    text-align: center;
+    font-size: 5.5rem;
+    margin-top: -5rem;
+    margin-bottom: 2rem;
+    background-color: $lightpurple;
+    padding: 0 5%;
+    @include box-shadow(12px, 12px, $lightblue);
+    @include text-shadow(5px, 3px, $darkpurple);
 }
 
 h2 {
     font-size: 2.5rem;
     margin-top: 20px;
     margin-bottom: 10px;
+    font-size: 1.4rem;
+    font-weight: 400;
+    background-color: $watermelon;
 }
 
 h3 {

@@ -235,23 +235,34 @@ h2,
 h3,
 button {
   font-family: "Francois One", sans-serif;
-  letter-spacing: 1.5px;
-}
-
-h1 {
-  font-size: 5rem;
-  margin-top: 20px;
 }
 
 h1,
-button {
+button,
+h2 {
   text-transform: uppercase;
+  color: #fff;
+}
+
+h1 {
+  text-align: center;
+  font-size: 5.5rem;
+  margin-top: -5rem;
+  margin-bottom: 2rem;
+  background-color: #a4a4ff;
+  padding: 0 5%;
+  -webkit-box-shadow: 12px 12px #a0e7fe;
+          box-shadow: 12px 12px #a0e7fe;
+  text-shadow: 5px 3px #3f1d93;
 }
 
 h2 {
   font-size: 2.5rem;
   margin-top: 20px;
   margin-bottom: 10px;
+  font-size: 1.4rem;
+  font-weight: 400;
+  background-color: #ff8170;
 }
 
 h3 {
@@ -357,8 +368,9 @@ button:hover {
 .game-play-screen,
 .round-result-screen,
 .final-result-screen {
-  background-color: #FAFAFA;
-  border: 12px solid #a0e7fe;
+  background-color: #fff;
+  -webkit-box-shadow: 12px 12px #a0e7fe;
+          box-shadow: 12px 12px #a0e7fe;
 }
 
 .countdown-screen {
