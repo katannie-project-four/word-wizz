@@ -41,3 +41,9 @@ $correct: #2E8B57;
     @content;
   }  
 }
+
+@mixin media-height($width) {
+  @media (max-height: $width) {
+    @content;
+  }  
+}
