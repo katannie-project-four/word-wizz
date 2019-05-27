@@ -392,16 +392,29 @@ button:hover {
 
 @media (max-width: 851px) {
   .intro-screen .how-to-container .how-to-txt {
+    width: 100%;
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
             order: 2;
-    width: 100%;
   }
 }
 
 .intro-screen .how-to-container .how-to-img {
-  width: 50%;
-  margin-right: -8rem;
+  width: 58%;
+  margin-right: -2rem;
+}
+
+@media (max-width: 1100px) {
+  .intro-screen .how-to-container .how-to-img {
+    width: 70%;
+    margin-right: -5rem;
+  }
+}
+
+@media (max-width: 989px) {
+  .intro-screen .how-to-container .how-to-img {
+    width: 90%;
+  }
 }
 
 @media (max-width: 851px) {
@@ -425,12 +438,6 @@ button:hover {
   text-shadow: 5px 3px #3f1d93;
 }
 
-@media (max-width: 851px) {
-  .intro-screen h1 {
-    font-size: 4rem;
-  }
-}
-
 @media (max-width: 1350px) {
   .intro-screen h1 {
     margin-bottom: 1rem;
@@ -440,6 +447,20 @@ button:hover {
 @media (max-width: 1150px) {
   .intro-screen h1 {
     margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .intro-screen h1 {
+    font-size: 5rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 706px) {
+  .intro-screen h1 {
+    line-height: 1;
+    padding: 1rem;
   }
 }
 
@@ -491,6 +512,14 @@ button:hover {
 @media (max-width: 1150px) {
   .intro-screen button {
     margin-top: 2rem;
+    margin-bottom: -3.5rem;
+  }
+}
+
+@media (max-width: 568px) {
+  .intro-screen button {
+    margin-top: 1rem;
+    margin-bottom: 0;
   }
 }
 
@@ -532,6 +561,7 @@ button:hover {
 
 .countdown-screen {
   background-color: #ff8170;
+  padding-bottom: 1.2rem;
   z-index: 1;
 }
 
@@ -543,6 +573,11 @@ button:hover {
   .countdown-screen h2 {
     font-size: 4rem;
   }
+}
+
+.round-result-screen,
+.final-result-screen {
+  padding-bottom: 1.2rem;
 }
 
 .round-result-screen p,
@@ -561,7 +596,7 @@ button:hover {
 @media (max-width: 400px) {
   .round-result-screen p,
   .final-result-screen p {
-    font-size: 1.3rem;
+    font-size: 1.7rem;
   }
 }
 
@@ -570,6 +605,7 @@ button:hover {
   color: #ff8170;
   background-color: #fff;
   font-size: 3.6rem;
+  line-height: 1.15;
 }
 
 @media (max-width: 1030px) {
@@ -591,19 +627,16 @@ button:hover {
 @media (max-width: 550px) {
   .round-result-screen h2,
   .final-result-screen h2 {
-    font-size: 2rem;
+    font-size: 2.4rem;
   }
 }
 
 .final-result-screen .result-msg {
   text-align: center;
-  max-width: 90%;
-}
-
-@media (max-width: 500px) {
-  .final-result-screen .result-msg {
-    font-size: 1.6rem;
-  }
+  max-width: 60%;
+  font-size: 1.2rem;
+  margin-top: .5rem;
+  margin-bottom: 1.5rem;
 }
 
 .round-result-screen p:last-of-type {
@@ -613,7 +646,7 @@ button:hover {
 @media (max-width: 340px) {
   .final-result-screen,
   .round-result-screen {
-    margin-top: -60px;
+    margin-top: -80px;
   }
 }
 
@@ -670,6 +703,7 @@ button:hover {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
+    margin-top: -1.5rem;
   }
 }
 
@@ -769,6 +803,12 @@ button:hover {
   margin-top: 15px;
 }
 
+@media (max-width: 400px) {
+  .game-play-screen p {
+    margin-top: 5px;
+  }
+}
+
 .game-play-screen p span {
   font-size: 2rem;
   color: #2E8B57;
@@ -800,6 +840,7 @@ button:hover {
 @media (max-width: 400px) {
   .game-play-screen h2 {
     font-size: 2.5rem;
+    margin-top: -6rem;
   }
 }
 
@@ -904,8 +945,12 @@ footer {
   right: 0;
   bottom: 0;
   left: 0;
-  line-height: 1.5;
   padding: 10px;
+}
+
+footer p {
+  line-height: 2;
+  padding: 0 1rem;
 }
 
 footer a {
