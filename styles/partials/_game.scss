@@ -6,6 +6,7 @@
   @include flex(column, nowrap, center, center);
   @include media(325px) {
     justify-content: flex-start;
+    margin-top: -1.5rem;
   }
 
   .game-field {
@@ -52,6 +53,9 @@
     margin-top: 15px;
     text-transform: uppercase;
     font-family: $font-secondary;
+     @include media(400px) {
+      margin-top: 5px;
+    }
   }
   p span {
     font-size: 2rem;
@@ -73,11 +77,13 @@
   h2 {
     margin-top: -100px;
     font-size: 3rem;
-    @include media(400px) {
-      font-size: 2.5rem;
-    }
     padding: 0 10px;
     @include box-shadow(12px, 12px, $lightblue);
+    margin-top: -10rem;
+    @include media(400px) {
+      font-size: 2.5rem;
+      margin-top: -6rem;
+    }
     // @include position(absolute, -120px, 50vw, null, null);
   }
   h3 {

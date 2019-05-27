@@ -6,8 +6,11 @@ footer {
     width: 100%;
     font-size: .8rem;
     @include position(absolute, null, 0, 0, 0);
-    line-height: 1.5;
     padding: 10px;
+    p {
+        line-height: 2;
+        padding: 0 1rem;
+    }
     a {
         text-decoration: none;
         padding: 0 5px;
