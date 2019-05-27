@@ -647,8 +647,7 @@ button:hover {
 .round-result-screen p:last-of-type {
   margin-bottom: 20px;
   text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 @media (max-width: 340px) {
@@ -684,7 +683,6 @@ button:hover {
 }
 
 .game-play-screen {
-  padding-top: 30px;
   padding-bottom: 30px;
   margin-top: 50px;
   display: -webkit-box;
@@ -711,13 +709,7 @@ button:hover {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
-    margin-top: -1.5rem;
-  }
-}
-
-@media (max-height: 600px) {
-  .game-play-screen {
-    margin-top: 100px;
+    margin-top: 0.5rem;
   }
 }
 
@@ -725,6 +717,7 @@ button:hover {
   position: relative;
   width: 100%;
   margin-top: 20px;
+  padding-top: 5rem;
   min-height: 350px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -814,7 +807,8 @@ button:hover {
 }
 
 .game-play-screen p {
-  margin-top: 15px;
+  margin-top: 10px;
+  margin-bottom: .5rem;
   text-transform: uppercase;
   font-family: "Francois One", sans-serif;
 }
@@ -846,12 +840,12 @@ button:hover {
 }
 
 .game-play-screen h2 {
-  margin-top: -100px;
+  margin-top: -8rem;
   font-size: 3rem;
   padding: 0 10px;
+  margin-bottom: -.5rem;
   -webkit-box-shadow: 12px 12px #a0e7fe;
           box-shadow: 12px 12px #a0e7fe;
-  margin-top: -10rem;
 }
 
 @media (max-width: 400px) {
@@ -863,12 +857,21 @@ button:hover {
 
 .game-play-screen h3 {
   font-size: 2.2rem;
-  margin-bottom: 20px;
+  margin-top: 3rem;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+@media (max-width: 650px) {
+  .game-play-screen h3 {
+    margin-top: 2.5rem;
+  }
 }
 
 @media (max-width: 400px) {
   .game-play-screen h3 {
     font-size: 2rem;
+    margin-top: 1.5rem;
   }
 }
 

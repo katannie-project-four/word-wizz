@@ -11,7 +11,7 @@ wizApp.category = [
   [
     { //chicken
       type: `Chicken`,
-      words: [`kfc`, `wing`, `feather`, `beak`, `peak`, `fly`],
+      words: [`kfc`, `wing`, `feather`, `beak`, `peak`, `fly`, `peck`],
       score: 0
     },
     { //cow
