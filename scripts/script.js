@@ -214,22 +214,24 @@ wizApp.playGame = animal => {
 
 // Display user score for the round
 wizApp.displayRoundResultScreen = (animal) => {
+  $(`.round-result-screen`).removeClass(`hide`);
+  $(`.game-play-screen`).addClass('hide');
+  $(`.next-round-btn`).focus();
   // Update values and display round results
   $(`.round-result-screen p span`).html(`${animal.score}`);
   wizApp.totalScore.push(animal.score);
   $(`h2 span`).html(`${wizApp.currentRoundNum}`);
   if (wizApp.currentRoundNum === 3) {
     // Auto-focus on next-round button and change the text
-    $(`.next-round-btn`).focus().html(`Did you out-wiz our Wizard?`).on(`click`, function () {
+    $(`.next-round-btn`).html(`Did you out-wiz our Wizard?`).on(`click`, function () {
       wizApp.displayTotalScoreScreen();
     });
     if ($(window).width() <= 340) {
-      $(`.next-round-btn`).focus().html(`Go to results!`);
+      $(`.next-round-btn`).html(`Go to results!`);
     }
   } else {
     $(`.next-round-btn span`).html(`${wizApp.nextRoundNum}`);
   }
-  $(`.round-result-screen`).removeClass(`hide`);
   $(`form`).attr(`id`, `round-${wizApp.nextRoundNum}`)
 }
 
