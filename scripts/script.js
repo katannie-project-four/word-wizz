@@ -148,7 +148,6 @@ wizApp.handleSubmit = (animalCategory, animalScore) => {
 wizApp.round = () => {
   // show / hide the appropirate screens
   $(`.intro-screen`).addClass(`hide`);
-  $(`.game-play-screen`).removeClass(`hide`);
   $(`.game-center`).removeClass(`hide`);
   // increase the round number and next round number
   wizApp.currentRoundNum += 1;
@@ -196,6 +195,8 @@ wizApp.playGame = animal => {
   $(`.category-word`).html(`${animal.type}`);
   // Hide the countdown screen
   $(`.countdown-screen`).addClass(`hide`);
+  // show game play screen
+  $(`.game-play-screen`).removeClass(`hide`);
   // Start timer for the game rounds
   let timeLeft = 20;
   let timer = setInterval(function () {

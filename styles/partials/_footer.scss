@@ -8,7 +8,7 @@ footer {
     @include position(absolute, null, 0, 0, 0);
     padding: 10px;
     p {
-        line-height: 2;
+        line-height: 1.5;
         padding: 0 1rem;
     }
     a {
@@ -21,6 +21,10 @@ footer {
             background-color: $watermelon;
         }
     }
+    @include media-height (600px) {
+        display: none;
+    }
+    
 }
 
 

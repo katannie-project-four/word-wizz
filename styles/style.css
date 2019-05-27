@@ -710,6 +710,12 @@ button:hover {
   }
 }
 
+@media (max-height: 600px) {
+  .game-play-screen {
+    margin-top: 100px;
+  }
+}
+
 .game-play-screen .game-field {
   position: relative;
   width: 100%;
@@ -840,6 +846,7 @@ button:hover {
   padding: 0 10px;
   -webkit-box-shadow: 12px 12px #a0e7fe;
           box-shadow: 12px 12px #a0e7fe;
+  margin-top: -10rem;
 }
 
 @media (max-width: 400px) {
@@ -954,7 +961,7 @@ footer {
 }
 
 footer p {
-  line-height: 2;
+  line-height: 1.5;
   padding: 0 1rem;
 }
 
@@ -969,6 +976,12 @@ footer a {
 
 footer a:hover {
   background-color: #ff8170;
+}
+
+@media (max-height: 600px) {
+  footer {
+    display: none;
+  }
 }
 
 /* === IMAGE CREDITS ===
