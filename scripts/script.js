@@ -125,7 +125,6 @@ $.when(...wizApp.fishObjsFromAPI)
 // =============== GAME FUNCTIONS  =============== //
 //Form to handle user's guesses
 wizApp.handleSubmit = (animalCategory, animalScore) => {
-  console.log(animalCategory, animalScore);
   // Grab the user's guess from input field
   let userInput = $(`input`).val().toLowerCase();
   // Reset input field to nothing after user submits
@@ -149,6 +148,10 @@ wizApp.round = () => {
   // show / hide the appropirate screens
   $(`.intro-screen`).addClass(`hide`);
   $(`.game-center`).removeClass(`hide`);
+  // hide footer on mobile so the keyboard doesn't push it up into 
+  if ($(window).width() <= 768) {
+    $(`footer`).addClass(`hide`);
+  }
   // increase the round number and next round number
   wizApp.currentRoundNum += 1;
   wizApp.nextRoundNum += 1;
@@ -189,14 +192,14 @@ wizApp.displayGameCountdown = animal => {
 
 // Play the game
 wizApp.playGame = animal => {
-  // Automatically sets user input field to be focused on load
-  $(`#user-input`).focus();
   // Append the animal type to the round title
   $(`.category-word`).html(`${animal.type}`);
   // Hide the countdown screen
   $(`.countdown-screen`).addClass(`hide`);
   // show game play screen
   $(`.game-play-screen`).removeClass(`hide`);
+  // Automatically sets user input field to be focused on load
+  $(`#user-input`).focus();
   // Start timer for the game rounds
   let timeLeft = 20;
   let timer = setInterval(function () {
@@ -296,7 +299,6 @@ wizApp.eventListeners = () => {
 
   // Auto-focus and reset the game when play again button is clicked
   $(`.play-again-btn`).focus().on(`click`, function () {
-    console.log(`clicked reset btn`);
     window.location.reload();
   });
 };

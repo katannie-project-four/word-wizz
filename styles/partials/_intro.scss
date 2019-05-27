@@ -1,4 +1,8 @@
 .intro-screen {
+  p,
+  li {
+    font-family: $font-primary;
+  }
   @include flex(column, nowrap, center, center);
   margin: 100px auto;
   padding: 0 30px 40px;
